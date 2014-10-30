@@ -1,19 +1,19 @@
-#' The LDA Augmented Collapsed Gibbs sampler (ACGS)
+#' Augmented collapsed Gibbs sampler (ACGS) for LDA
 #' 
-#' This a Markov chain on \eqn{(z, \beta, \theta)} extending the Collapsed Gibbs
-#' Sampler of Griffiths and Steyvers (2004), which is a Markov chain on \eqn{z}
+#' This a Markov chain on \eqn{(z, \beta, \theta)} extending the collapsed Gibbs
+#' sampler (CGS) of Griffiths and Steyvers (2004)---a Markov chain on \eqn{z}.
 #' 
-#' @param K the number of topics in the corpus
-#' @param V  the vocabulary size
-#' @param wid the vocabulary ids of every word instance in each corpus document
+#' @param K Number of topics in the corpus
+#' @param V  Vocabulary size
+#' @param wid Vocabulary ids of every word instance in each corpus document
 #'   (1 X total.N vector). We assume vocabulary id starts with 1
-#' @param doc.N the document lengths
-#' @param alpha.v the hyper parameter vector for \eqn{\theta}
-#' @param eta the \eqn{\beta} matrix smoothing parameter
-#' @param max.iter the max number of Gibbs iterations to be performed
-#' @param burn.in the burn in period of the Gibbs sampler
-#' @param spacing the spacing between the stored samples (to reduce correlation)
-#' @param store.Dir if 0 the sampler does not save \eqn{(\theta, \beta)} samples
+#' @param doc.N Documents' word counts 
+#' @param alpha.v Hyperparameter vector for \eqn{\theta}
+#' @param eta Smoothing parameter for the \eqn{\beta} matrix 
+#' @param max.iter Maximum number of Gibbs iterations to be performed
+#' @param burn.in Burn-in-period for the Gibbs sampler
+#' @param spacing Spacing between the stored samples (to reduce correlation)
+#' @param store.Dir If 0 the sampler does not save \eqn{(\theta, \beta)} samples
 #'   
 #' @return the Gibbs sampling output
 #'   

@@ -1,19 +1,20 @@
-#' The LDA Full Gibbs sampler (FGS)
+#' Full Gibbs sampler (FGS) for LDA (uses Blei's format for corpus)
 #' 
-#' This a R wrapper function for the C++ implementation of the full Gibbs
-#' sampler for LDA, which is a Markov chain on \eqn{(z, \beta, \theta)}. This
-#' function uses a corpus that is created using \code{\link{read_docs}}.
+#' This a R wrapper function for the C++ implementation of the full Gibbs 
+#' sampler for LDA---a Markov chain on \eqn{(z, \beta, \theta)}. This uses 
+#' Blei's corpus format for the input corpus. See \code{\link{read_docs}} to 
+#' read a corpus in Blei's corpus format.
 #' 
-#' @param K the number of topics in the corpus
-#' @param V  the vocabulary size
-#' @param doc.N the document lengths
-#' @param docs a list of corpus documents read from the Blei corpus
-#' @param alpha.v the hyper parameter vector for \eqn{\theta}
-#' @param eta the \eqn{\beta} matrix smoothing parameter
-#' @param max.iter the max number of Gibbs iterations to be performed
-#' @param burn.in the burn in period of the Gibbs sampler
-#' @param spacing the spacing between the stored samples (to reduce correlation)
-#' @param store.Dir if 0 the sampler does not save \eqn{(\theta, \beta)} samples
+#' @param K Number of topics in the corpus
+#' @param V  Vocabulary size
+#' @param doc.N Documents' word counts 
+#' @param docs A list of corpus documents read from the Blei corpus using \code{\link{read_docs}}
+#' @param alpha.v Hyperparameter vector for \eqn{\theta}
+#' @param eta Smoothing parameter for the \eqn{\beta} matrix 
+#' @param max.iter Maximum number of Gibbs iterations to be performed
+#' @param burn.in Burn-in-period for the Gibbs sampler
+#' @param spacing Spacing between the stored samples (to reduce correlation)
+#' @param store.Dir If 0 the sampler does not save \eqn{(\theta, \beta)} samples
 #'   
 #' @return the Gibbs sampling output
 #'   

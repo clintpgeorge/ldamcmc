@@ -6,8 +6,8 @@
 #' 
 #' 
 #' @references 
-#' Clint P. George and Hani Doss (2014). Principled Selections of 
-#' Hyperparameter in the Latent Dirichlet Allocation Model. 
+#' Clint P. George and Hani Doss (2014). Principled Selection of Hyperparameters 
+#' in the Latent Dirichlet Allocation Model. 
 #' 
 #' 
 #' @docType package
