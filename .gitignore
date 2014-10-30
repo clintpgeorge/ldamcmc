@@ -9,3 +9,11 @@
 
 # RStudio files
 .Rproj.user/
+.Rproj.user
+
+# DLLs
+*.dll
+
+# C compilation output
+*.o
+

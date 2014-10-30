@@ -1,0 +1,17 @@
+docid;category;sub-category;title;wordcount;uniquewords
+36;whales;Baleen_Whale;Common_minke_whale;146;74
+42;whales;Baleen_Whale;Blue_whale;209;132
+43;whales;Baleen_Whale;Fin_whale;264;167
+51;whales;Baleen_Whale;Humpback_whale;212;152
+55;whales;Toothed_Whale;Toothed_whale;155;101
+56;whales;Toothed_Whale;Beaked_whale;227;150
+60;whales;Toothed_Whale;Bottlenose_whale;166;112
+69;whales;Killer_Whale;Killer_whale;191;134
+76;tires;Tire;Tire;604;195
+87;tires;Tire;Snow_tires;187;115
+88;tires;Tire;Airless_tire;130;98
+99;tires;Tire;Continental_tire;190;107
+111;tires;Tire;Motorcycle_tyre;144;93
+115;tires;Tire;Tubeless_tyre;98;67
+116;tires;Tire;Tubular_tyre;159;105
+119;tires;Tire;Radial_tire;73;54
