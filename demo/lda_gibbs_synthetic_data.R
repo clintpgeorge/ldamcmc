@@ -26,7 +26,10 @@ gen.eta        <- 7
 gen.alpha      <- 3
 gen.alpha.v    <- array(gen.alpha, c(1, K)); # symmetric Dirichlet
 gen.eta.v      <- array(gen.eta, c(1, V));   # symmetric Dirichlet
-store.Dir      <- 1                          # store the \theta and \beta Dirichlet samples ? 
+store.z        <- 1                          # store z samples ? 
+store.beta     <- 0                          # store beta samples ? 
+store.theta    <- 0                          # store theta samples ? 
+store.lp       <- 0                          # store log posterior for each iteration 
 
 file.prefix    <- paste(prefix, "-alpha", gen.alpha, "-eta", gen.eta, sep = "")
 rdata.file     <- paste(file.prefix, ".RData", sep = "")[1]
@@ -49,7 +52,8 @@ ds             <- gen_synth_corpus(D, lambda.hat, gen.alpha.v, beta.m)
 # help(lda_fgs)
 ptm            <- proc.time();
 fg.mdl         <- lda_fgs(K, V, ds$wid, ds$doc.N, gen.alpha.v, gen.eta, 
-                          max.iter, burn.in, spacing, store.Dir);
+                          max.iter, burn.in, spacing, store.z, store.beta, 
+                          store.theta, store.lp);
 ptm            <- proc.time() - ptm;
 cat("execution time = ", ptm[3], "\n");
 
@@ -59,7 +63,8 @@ cat("execution time = ", ptm[3], "\n");
 # help(lda_acgs)
 ptm            <- proc.time();
 cg.mdl         <- lda_acgs(K, V, ds$wid, ds$doc.N, gen.alpha.v, gen.eta, 
-                           max.iter, burn.in, spacing, store.Dir);
+                           max.iter, burn.in, spacing, store.z, store.beta, 
+                           store.theta, store.lp);
 ptm            <- proc.time() - ptm;
 cat("execution time = ", ptm[3], "\n");
 

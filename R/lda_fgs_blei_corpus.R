@@ -14,7 +14,11 @@
 #' @param max.iter Maximum number of Gibbs iterations to be performed
 #' @param burn.in Burn-in-period for the Gibbs sampler
 #' @param spacing Spacing between the stored samples (to reduce correlation)
-#' @param store.Dir If 0 the sampler does not save \eqn{(\theta, \beta)} samples
+#' @param save.z if 0 the function does not save \eqn{z} samples    
+#' @param save.beta if 0 the function does not save \eqn{\beta} samples    
+#' @param save.theta if 0 the function does not save \eqn{\theta} samples    
+#' @param save.lp if 0 the function does not save computed log posterior for 
+#'            iterations 
 #'   
 #' @return the Gibbs sampling output
 #'   
@@ -23,7 +27,8 @@
 #' @family Gibbs sampling methods
 #'   
 lda_fgs_blei_corpus <- function(K, V, doc.N, docs, alpha.v, eta, max.iter=100, 
-                                burn.in=0, spacing=1, store.Dir=1){
+                                burn.in=0, spacing=1, save.z=0, save.beta=0, 
+                                save.theta=0, save.lp=0){
   
   # initializes the variables 
   total.N <- sum(doc.N); # the total number of word instances 
@@ -34,9 +39,13 @@ lda_fgs_blei_corpus <- function(K, V, doc.N, docs, alpha.v, eta, max.iter=100,
   
   # NOTE: we subtract zid with one because in C the indexing starts at zero 
   ret <- .Call("lda_fgs_blei_corpus", K, V, doc.N, docs, zid-1, alpha.v, eta, 
-               max.iter, burn.in, spacing, store.Dir, PACKAGE="ldamcmc");
+               max.iter, burn.in, spacing, save.z, save.beta, save.theta, 
+               save.lp, PACKAGE="ldamcmc");
   
-  list(Z=ret$Z+1, theta=ret$thetas, beta=ret$betas, lp=ret$lp);
+  if (is.null(ret$Z)) { Z = NULL; } 
+  else { Z = ret$Z + 1; } # change to C array indexing scheme   
+  
+  list(Z=Z, theta=ret$thetas, beta=ret$betas, lp=ret$lp);
   
 }
 

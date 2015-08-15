@@ -45,7 +45,10 @@ SEED           <- 1983
 max.iter       <- 11000 # the maximum number of Gibbs iterations
 burn.in        <- 1000
 spacing        <- 1
-store.Dir      <- 1
+store.z        <- 1                          # store z samples ? 
+store.beta     <- 1                          # store beta samples ? 
+store.theta    <- 1                          # store theta samples ? 
+store.lp       <- 1                          # store log posterior for each iteration 
 set.seed(SEED)
 
 
@@ -79,14 +82,14 @@ alpha.v <- array(alpha, dim=c(K, 1));
 
 # Full Gibbs sampling (FGS)
 # See help(lda_fgs)
-model <- lda_fgs(K, V, ds$wid+1, doc.N, alpha.v, eta, max.iter, burn.in, 
-                 spacing, store.Dir);
+# model <- lda_fgs(K, V, ds$wid+1, doc.N, alpha.v, eta, max.iter, burn.in, 
+#                  spacing, store.z, store.beta, store.theta, store.lp);
 
 # Augmented Collapsed Gibbs sampling (ACGS)
 # NOTE: if store_dirichlet is set as 0, this only do Collapsed Gibbs sampling. 
 # See help(lda_acgs)
-# model <- lda_acgs(K, V, ds$wid+1, doc.N, alpha.v, eta, max.iter, burn.in, 
-#                   spacing, store.Dir);
+model <- lda_acgs(K, V, ds$wid+1, doc.N, alpha.v, eta, max.iter, burn.in, 
+                  spacing, store.z, store.beta, store.theta, store.lp);
 
 
 # Displays most probable words from each topic
