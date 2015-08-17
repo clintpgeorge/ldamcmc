@@ -2,9 +2,10 @@
 
 
 /**
- *  Computes Log Posterior Predictive Value: 
+ *  Computes Log Posterior Predictive Value for the LDA model: 
  *  
- *  This is developed by Zhe Chen (2015) for his dissertation  
+ *  Implementation of the log posterior predictive value is based on Zhe Chen 
+ *  (2015) [dissertation]. 
  *
  * 	Arguments:
  * 		num_topics_              - number of topics
@@ -22,12 +23,18 @@
  * 		Log posterior predictive value of the corpus 
  *
  */
-RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_, 
-                             SEXP doc_lengths_, SEXP topic_assignments_, 
-                             SEXP alpha_v_, SEXP eta_, SEXP max_iter_, 
-                             SEXP burn_in_, SEXP spacing_) {
+RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, 
+                             SEXP vocab_size_, 
+                             SEXP word_ids_, 
+                             SEXP doc_lengths_, 
+                             SEXP topic_assignments_, 
+                             SEXP alpha_v_, 
+                             SEXP eta_, 
+                             SEXP max_iter_, 
+                             SEXP burn_in_, 
+                             SEXP spacing_) {
   
-  cout << "lda_fgs (c++): init process..." << endl;
+  cout << "lda_fgs (c++): initialization of variables ..." << endl;
   
   // Variable from the R interface  
   
@@ -44,6 +51,7 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_,
   unsigned int spacing = as<unsigned int>(spacing_);
 
   // Function variables 
+  
   unsigned int saved_samples = ceil((max_iter - burn_in) / (double) spacing);
   unsigned int num_docs = doc_lengths.n_elem;
 
@@ -59,6 +67,7 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_,
   
 
   // Calculates the indices for each word in a document as a vector
+  
   for (d = 0; d < num_docs; d++){
     vector < unsigned int > word_idx;
     for (i = 0; i < doc_lengths(d); i++){
@@ -73,7 +82,7 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_,
   
   
   
-  for (hod = 0; hod < num_docs; hod++){ // for each held-out document d 
+  for (hod = 0; hod < num_docs; hod++){ // For each held-out document hod 
 
     cout << "lda_fgs (c++): Gibbs sampling [doc #" << hod << "]... " << endl;
     
@@ -89,9 +98,9 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_,
         beta_counts(z(i), word_ids(word_idx[i])) += 1;
     }
 
-    // The Gibbs sampling loop
+    // Full Gibbs sampler 
     
-    for (iter = 0; iter < max_iter; iter++){ 
+    for (iter = 0; iter < max_iter; iter++){ // The Gibbs sampling loop
       
       if (iter % msg_interval == 0) { 
         cout << "lda_fgs (c++): gibbs iter# " << iter + 1;
@@ -127,9 +136,9 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_,
         
       }
       
-      if ((iter >= burn_in) && (iter % spacing == 0)){ // Handles burn in period
+      if ((iter >= burn_in) && (iter % spacing == 0)){ // the burn-in period
         
-        // samples theta for held-out document hod  
+        // samples \theta for held-out document hod  
         
         vec theta_hod = sample_dirichlet(num_topics, alpha_v); 
         
@@ -147,12 +156,12 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_,
 
         ss_idx++; // updates the counter  
         
-      } // Handles burn in period
+      } // the burn-in period
       
       
       if (iter % msg_interval == 0) { cout << endl; }
       
-    } // The end of the Gibbs loop
+    } // The Gibbs sampling loop
     
     cout << "lda_fgs (c++): completed Gibbs sampling." << endl;
     cout << "lda_fgs (c++): number of saved samples - " << ss_idx << endl;
@@ -167,7 +176,7 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_,
     
     lppv_sum += avg_ppv;
   
-  }
+  } // For each held-out document hod 
   
   
   return List::create(
