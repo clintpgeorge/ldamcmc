@@ -50,7 +50,7 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_,
   mat beta_samples = zeros<mat>(num_topics, vocab_size);
   mat beta_counts = zeros<mat>(num_topics, vocab_size);
   mat lppv = zeros<mat>(num_docs, saved_samples);
-  double cp, llw_hod, shift_hod, avg_ppv, lppc = 0.0; 
+  double cp, llw_hod, shift_hod, avg_ppv, lppv_sum = 0.0; 
   double smoother = 1e-5;
   
   vector < vector < unsigned int > > doc_word_indices;
@@ -74,9 +74,7 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_,
   
   
   for (hod = 0; hod < num_docs; hod++){ // for each held-out document d 
-  
-    // double avg_llw_hod = 0.0;  
-  
+
     cout << "lda_fgs (c++): Gibbs sampling [doc #" << hod << "]... " << endl;
     
     ss_idx = 0; 
@@ -100,6 +98,7 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_,
       }
       
       // samples \beta
+      
       for(k = 0; k < num_topics; k++)
         beta_samples.row(k) = sample_dirichlet_row_vec(vocab_size, beta_counts.row(k));
       
@@ -111,12 +110,14 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_,
         vector < unsigned int > word_idx = doc_word_indices[d];
         
         // samples \theta
+        
         vec partition_counts = alpha_v; // initializes with the smoothing parameter
         for (i = 0; i < doc_lengths(d); i++)
           partition_counts(z(word_idx[i])) += 1;
         vec theta_d = sample_dirichlet(num_topics, partition_counts);
 
         // samples z and updates \beta counts
+        
         for(i = 0; i < doc_lengths(d); i++)
           beta_counts(z(word_idx[i]), word_ids(word_idx[i])) -= 1; // excludes document d's word-topic counts
         for (i = 0; i < doc_lengths(d); i++)
@@ -129,22 +130,20 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_,
       if ((iter >= burn_in) && (iter % spacing == 0)){ // Handles burn in period
         
         // samples theta for held-out document hod  
+        
         vec theta_hod = sample_dirichlet(num_topics, alpha_v); 
         
         // computes the log posterior predictive value of the held-out document 
         // using the current sample/iteration  
+        
         vector < unsigned int > word_idx = doc_word_indices[hod];
         llw_hod = 0.0;  
         for (i = 0; i < doc_lengths(hod); i++){
           cp = accu(theta_hod % beta_samples.col(word_ids(word_idx[i])));
-          // cp = accu(theta_hod.t() * beta_samples.col(word_ids(word_idx[i])));
           llw_hod += log(is_finite(cp)?(cp+smoother):smoother);
         }
         lppv(hod, ss_idx) = llw_hod;
         if (iter % msg_interval == 0) { cout << " log(PPV) = " << llw_hod; }
-
-        // Note online average is disabled because of some computational issues 
-        // avg_llw_hod = ((ss_idx * avg_llw_hod + exp(llw_hod)) / (ss_idx + 1.)); 
 
         ss_idx++; // updates the counter  
         
@@ -158,20 +157,22 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_,
     cout << "lda_fgs (c++): completed Gibbs sampling." << endl;
     cout << "lda_fgs (c++): number of saved samples - " << ss_idx << endl;
     
-    // lppv += log(avg_llw_hod) / (double)num_docs; 
+    // Computes the estimate of the predictive likelihood of the held-out 
+    // document hod  
     
     shift_hod = max(lppv.row(hod)) - 20; 
     avg_ppv = log(mean(exp(lppv.row(hod) - shift_hod))) + shift_hod;
+    
     cout << "lda_fgs (c++): log (PPV[avg](" << hod+1 << ")) = " << avg_ppv << endl;
     
-    lppc += avg_ppv;
+    lppv_sum += avg_ppv;
   
   }
   
   
   return List::create(
     Named("lppv") = wrap(lppv), 
-    Named("lppc") = wrap(lppc/(double)num_docs)
+    Named("lppc") = wrap(lppv_sum/(double)num_docs)
   );
   
 }
