@@ -59,8 +59,7 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_,
   mat beta_counts = zeros<mat>(num_topics, vocab_size);
   mat lppv = zeros<mat>(num_docs, saved_samples);
   double cp, llw_hod, shift_hod, avg_ppv, lppv_sum = 0.0; 
-  double smoother = 1e-5;
-  
+
   vector < vector < unsigned int > > doc_word_indices;
   unsigned int d, i, k, iter, ss_idx, instances = 0, hod; 
   unsigned int msg_interval = (100 >= max_iter)?1:100;
@@ -95,7 +94,7 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_,
       if (d == hod) continue; // ignores the held-out document    
       vector < unsigned int > word_idx = doc_word_indices[d];
       for (i = 0; i < doc_lengths(d); i++)
-        beta_counts(z(i), word_ids(word_idx[i])) += 1;
+        beta_counts(z(word_idx[i]), word_ids(word_idx[i])) += 1.0;
     }
 
     // Full Gibbs sampler 
@@ -110,8 +109,7 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_,
       
       for(k = 0; k < num_topics; k++)
         beta_samples.row(k) = sample_dirichlet_row_vec(vocab_size, beta_counts.row(k));
-      
-      
+
       for (d = 0; d < num_docs; d++){ // for each document
         
         if (d == hod) continue; // ignores the held-out document    
@@ -122,17 +120,17 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_,
         
         vec partition_counts = alpha_v; // initializes with the smoothing parameter
         for (i = 0; i < doc_lengths(d); i++)
-          partition_counts(z(word_idx[i])) += 1;
+          partition_counts(z(word_idx[i])) += 1.0;
         vec theta_d = sample_dirichlet(num_topics, partition_counts);
 
         // samples z and updates \beta counts
         
         for(i = 0; i < doc_lengths(d); i++)
-          beta_counts(z(word_idx[i]), word_ids(word_idx[i])) -= 1; // excludes document d's word-topic counts
+          beta_counts(z(word_idx[i]), word_ids(word_idx[i])) -= 1.0; // excludes document d's word-topic counts
         for (i = 0; i < doc_lengths(d); i++)
           z(word_idx[i]) = sample_multinomial(theta_d % beta_samples.col(word_ids(word_idx[i])));
         for(i = 0; i < doc_lengths(d); i++)
-          beta_counts(z(word_idx[i]), word_ids(word_idx[i])) += 1; // includes document d's word-topic counts
+          beta_counts(z(word_idx[i]), word_ids(word_idx[i])) += 1.0; // includes document d's word-topic counts
         
       }
       
@@ -149,7 +147,7 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_,
         llw_hod = 0.0;  
         for (i = 0; i < doc_lengths(hod); i++){
           cp = accu(theta_hod % beta_samples.col(word_ids(word_idx[i])));
-          llw_hod += log(is_finite(cp)?(cp+smoother):smoother);
+          llw_hod += log(cp);
         }
         lppv(hod, ss_idx) = llw_hod;
         if (iter % msg_interval == 0) { cout << " log(PPV) = " << llw_hod; }
@@ -175,7 +173,7 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_,
     cout << "lda_fgs (c++): log (PPV[avg](" << hod+1 << ")) = " << avg_ppv << endl;
     
     lppv_sum += avg_ppv;
-  
+
   } // For each held-out document hod 
   
   
