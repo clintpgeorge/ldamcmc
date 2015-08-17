@@ -44,7 +44,7 @@ This a R wrapper function for the C++ implementation of the full Gibbs
 sampler for LDA---a Markov chain on \eqn{(z, \beta, \theta)}.
 }
 \seealso{
-Other Gibbs.sampling.methods: \code{\link{lda_acgs}};
+Other Gibbs sampling methods: \code{\link{lda_acgs}};
   \code{\link{lda_fgs_blei_corpus}}
 }
 

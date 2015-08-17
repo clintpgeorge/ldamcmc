@@ -150,9 +150,14 @@ vec gamma_col_vec(vec x_vec){
 /***
 * Computes log posterior based on (3.4)
 */
-double calc_log_posterior(mat prior_theta, mat prior_beta,
-                          vector < vector < unsigned int > > doc_word_indices, uvec doc_lengths,
-                          uvec word_ids, uvec z, vec alpha_v, double eta){
+double calc_log_posterior(mat prior_theta, 
+                          mat prior_beta,
+                          vector < vector < unsigned int > > doc_word_indices, 
+                          uvec doc_lengths,
+                          uvec word_ids, 
+                          uvec z, 
+                          vec alpha_v, 
+                          double eta){
   
   double lp = 0.0;
   unsigned int d, i, num_docs, num_topics, vocab_size;
@@ -184,7 +189,10 @@ double calc_log_posterior(mat prior_theta, mat prior_beta,
   return lp;
 }
 
-
+RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_, 
+                             SEXP doc_lengths_, SEXP topic_assignments_, 
+                             SEXP alpha_v_, SEXP eta_, SEXP max_iter_, 
+                             SEXP burn_in_, SEXP spacing_);
 RcppExport SEXP lda_fgs(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_, 
                         SEXP doc_lengths_, SEXP topic_assignments_, 
                         SEXP alpha_v_, SEXP eta_, SEXP max_iter_, SEXP burn_in_, 
