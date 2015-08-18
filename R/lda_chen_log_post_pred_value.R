@@ -42,7 +42,7 @@ lda_chen_log_post_pred_value <- function(K, V, alpha, eta, did, wid, doc.N,
     llw <- sapply(1:num.samples, function(j)
       sum( 
         sapply(1:doc.N[d], function(i) 
-          log( crossprod( lda.fit$beta[, wid_d[i], j], theta[,j]) + 10^(-5) )
+          log( crossprod(lda.fit$beta[, wid_d[i], j], theta[,j]) ) #  + 10^(-5) 
         )
       )
     )
