@@ -1,4 +1,4 @@
-#' Log Posterior Predictive Value  
+#' Log Posterior Predictive Value based on the Augmented Collapsed Gibbs Sampler   
 #' 
 #' Computation is based on Zhe Chen (2015)'s method 
 #' 
@@ -21,10 +21,10 @@
 #' 
 #' @family posterior predictive check (PPC) options 
 #'   
-lda_chen_log_post_pred_value <- function(K, V, alpha, eta, did, wid, doc.N,
-                                         max.iter = 5*10^3, 
-                                         burn.in = 10^3, 
-                                         spacing = 1){
+lda_acgs_lppv_R <- function(K, V, alpha, eta, did, wid, doc.N,
+                           max.iter = 5*10^3, 
+                           burn.in = 10^3, 
+                           spacing = 1){
   num.docs <- length(doc.N);
   alpha.v <- rep(alpha, K); 
   ppv <- 0; 
@@ -34,7 +34,7 @@ lda_chen_log_post_pred_value <- function(K, V, alpha, eta, did, wid, doc.N,
     wid_d <- wid[index.d]; # held-out document 
     wid_nod <- wid[-index.d]; # the rest of the documents in the corpus 
             
-    lda.fit <- lda_fgs(K, V, wid_nod, doc.N[-d], alpha.v, eta, max.iter, burn.in, 
+    lda.fit <- lda_acgs(K, V, wid_nod, doc.N[-d], alpha.v, eta, max.iter, burn.in, 
                        spacing, save.z=0, save.beta=1, save.theta=0, save.lp=0);
     num.samples <- dim(lda.fit$beta)[3];
     theta <- sapply(1:num.samples, function(i) rdirichlet(n=1, alpha=alpha.v));

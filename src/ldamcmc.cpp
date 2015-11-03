@@ -83,7 +83,7 @@ RcppExport SEXP lda_fgs_lppv(SEXP num_topics_,
   
   for (hod = 0; hod < num_docs; hod++){ // For each held-out document hod 
 
-    cout << "lda_fgs (c++): Gibbs sampling [doc #" << hod << "]... " << endl;
+    cout << "lda_fgs (c++): Gibbs sampling [doc #" << hod+1 << "]... " << endl;
     
     ss_idx = 0; 
     

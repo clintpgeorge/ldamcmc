@@ -38,6 +38,7 @@ A list that consists of
 This is based on Zhe Chen (2015) [dissertation].
 }
 \seealso{
-Other posterior predictive check (PPC) options: \code{\link{lda_chen_log_post_pred_value}}
+Other posterior.predictive.check..PPC..options: \code{\link{lda_acgs_lppv_R}};
+  \code{\link{lda_fgs_lppv_R}}
 }
 

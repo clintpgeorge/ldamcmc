@@ -46,7 +46,7 @@ Blei's corpus format for the input corpus. See \code{\link{read_docs}} to
 read a corpus in Blei's corpus format.
 }
 \seealso{
-Other Gibbs sampling methods: \code{\link{lda_acgs}};
+Other Gibbs.sampling.methods: \code{\link{lda_acgs}};
   \code{\link{lda_fgs}}
 }
 
