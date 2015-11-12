@@ -9,28 +9,26 @@
 \title{The Whales and Tires dataset}
 \format{\code{wt.vocab} a vector of unique words in the corpus vocabulary.
 
-\code{wt.docs} a list of documents in the corpus, where each
- document is represented by a matrix (2 X U) of word frequencies.
- The variable U is the number of unique words in a document. Each
- matrix column represents a unique word in a document which
- contains the following variables
+\code{wt.docs} a list of documents in the corpus. Each item (represents a
+ document) is a matrix (2 X U) of word frequencies, where U represents the
+ number of unique words in a document. Each column in the matrix represents
+ a unique word in a document and contains
  \itemize{
-   \item vocabulary-id. the index of a term in the vocabulary (
-   starts with 0)
-   \item frequency. the relative of a term in a given document
+   \item vocabulary-id. the index of the word in the vocabulary (starts with 0)
+   \item frequency. the relative frequency of the word in the document
  }
 
-\code{wt.docs.metadata} a matrix of documents metadata, where
-each row that represents a document contains
+\code{wt.docs.metadata} a matrix of document (article) metadata, where each
+row represents a document with
  \itemize{
-   \item category. the Wikipedia category assigned to an article
+   \item category. the Wikipedia category assigned to the article
    \item title. the title of the Wikipedia web article
  }}
 \source{
-The articles are downloaded from the
+The Wikipedia articles are downloaded from the
  \href{http://en.wikipedia.org/wiki/Main_Page}{English Wikipedia}
  with the help of
- \href{http://www.mediawiki.org/wiki/API:Main_page}{Media Wiki}
+ \href{http://www.mediawiki.org/wiki/API:Main_page}{Media Wiki} API.
 }
 \usage{
 \code{data(wt.vocab)}
@@ -48,12 +46,13 @@ dataset contains 84 Wikipedia articles.
 Clint P. George, April 15, 2014
 }
 \seealso{
-\pkg{\link{lda}}
-
 Other datasets: \code{\link{bop}}, \code{\link{bop.docs}},
   \code{\link{bop.docs.metadata}}, \code{\link{bop.vocab}};
   \code{\link{whales}}, \code{\link{whales.docs}},
   \code{\link{whales.docs.metadata}},
-  \code{\link{whales.vocab}}
+  \code{\link{whales.vocab}}; \code{\link{wt16}},
+  \code{\link{wt16.docs}},
+  \code{\link{wt16.docs.metadata}},
+  \code{\link{wt16.vocab}}
 }
 

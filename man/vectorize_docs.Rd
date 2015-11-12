@@ -31,7 +31,7 @@ ds <- vectorize_docs(documents);
 \seealso{
 \code{\link{lda_fgs_blei_corpus}}
 
-Other lda.data.preprocessing.methods: \code{\link{calc_doc_lengths}};
+Other lda data preprocessing methods: \code{\link{calc_doc_lengths}};
   \code{\link{read_docs}}
 }
 

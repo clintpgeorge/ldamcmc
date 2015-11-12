@@ -63,7 +63,7 @@ vec sample_dirichlet(unsigned int num_elements, vec alpha){
   vec dirichlet_sample = zeros<vec>(num_elements);
   
   for ( register unsigned int i = 0; i < num_elements; i++ )
-    dirichlet_sample(i) = R::rgamma(1, alpha(i)); // rgamma(1, alpha(i), 1.0)(0);
+    dirichlet_sample(i) = rgamma(1, alpha(i), 1.0)(0); // R::rgamma(1, alpha(i));
   
   dirichlet_sample /= accu(dirichlet_sample);
   
@@ -85,7 +85,7 @@ rowvec sample_dirichlet_row_vec (unsigned int num_elements, rowvec alpha){
   rowvec dirichlet_sample = zeros<rowvec>(num_elements);
   
   for ( register unsigned int i = 0; i < num_elements; i++ )
-    dirichlet_sample(i) = R::rgamma(1, alpha(i)); // rgamma(1, alpha(i), 1.0)(0);
+    dirichlet_sample(i) = rgamma(1, alpha(i), 1.0)(0); // R::rgamma(1, alpha(i));
   
   dirichlet_sample /= accu(dirichlet_sample);
   

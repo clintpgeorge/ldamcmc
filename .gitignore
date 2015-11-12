@@ -5,8 +5,8 @@
 *-Ex.R
 
 # R data files from past sessions
-.Rdata
-.RData
+*.Rdata
+*.RData
 
 # RStudio files
 .Rproj.user/
@@ -18,3 +18,6 @@
 # C compilation output
 *.o
 
+# images 
+data-raw/*.pdf
+data-raw/*.eps

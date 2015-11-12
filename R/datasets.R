@@ -1,3 +1,56 @@
+#' @name wt16
+#' 
+#' @title A subset of the Whales and Tires dataset
+#' 
+#' @description 
+#' A subset of Wikipedia artricles under the Wikipedia categories  
+#' \href{http://en.wikipedia.org/wiki/Category:Whales}{Whales} 
+#' and \href{http://en.wikipedia.org/wiki/Category:Tires}{Tires} 
+#' formatted for running the LDA Gibbs sampling algorithms. This 
+#' dataset contains 16 Wikipedia articles.
+#' 
+#' @docType data
+#' 
+#' @usage 
+#' \code{data(wt16.vocab)}
+#' \code{data(wt16.docs)}
+#' \code{data(wt16.docs.metadata)}
+#' 
+#' @format 
+#' \code{wt16.vocab} a vector of unique words in the corpus vocabulary.
+#'  
+#' \code{wt16.docs} a list of documents in the corpus. Each item (represents a 
+#'  document) is a matrix (2 X U) of word frequencies, where U represents the 
+#'  number of unique words in a document. Each column in the matrix represents 
+#'  a unique word in a document and contains    
+#'  \itemize{
+#'    \item vocabulary-id. the index of the word in the vocabulary (starts with 0)  
+#'    \item frequency. the relative frequency of the word in the document   
+#'  }         
+#'  
+#' \code{wt16.docs.metadata} a matrix of document (article) metadata, where each 
+#' row represents a document with        
+#'  \itemize{
+#'    \item category. the Wikipedia category assigned to the article 
+#'    \item title. the title of the Wikipedia web article     
+#'  } 
+#'  
+#' @source The Wikipedia articles are downloaded from the 
+#'  \href{http://en.wikipedia.org/wiki/Main_Page}{English Wikipedia}
+#'  with the help of 
+#'  \href{http://www.mediawiki.org/wiki/API:Main_page}{Media Wiki} API. 
+#' 
+#' 
+#' @aliases 
+#' wt16.docs.metadata
+#' wt16.docs
+#' wt16.vocab
+#' 
+#' @family datasets 
+#' 
+#' @author Clint P. George, November 11, 2015 
+NULL
+
 #' @name wt
 #' 
 #' @title The Whales and Tires dataset 
@@ -19,31 +72,27 @@
 #' @format 
 #' \code{wt.vocab} a vector of unique words in the corpus vocabulary.
 #'  
-#' \code{wt.docs} a list of documents in the corpus, where each 
-#'  document is represented by a matrix (2 X U) of word frequencies.  
-#'  The variable U is the number of unique words in a document. Each  
-#'  matrix column represents a unique word in a document which 
-#'  contains the following variables    
+#' \code{wt.docs} a list of documents in the corpus. Each item (represents a 
+#'  document) is a matrix (2 X U) of word frequencies, where U represents the 
+#'  number of unique words in a document. Each column in the matrix represents 
+#'  a unique word in a document and contains    
 #'  \itemize{
-#'    \item vocabulary-id. the index of a term in the vocabulary (
-#'    starts with 0)  
-#'    \item frequency. the relative of a term in a given document   
-#'  }        
+#'    \item vocabulary-id. the index of the word in the vocabulary (starts with 0)  
+#'    \item frequency. the relative frequency of the word in the document   
+#'  }      
 #'  
-#' \code{wt.docs.metadata} a matrix of documents metadata, where 
-#' each row that represents a document contains       
+#' \code{wt.docs.metadata} a matrix of document (article) metadata, where each 
+#' row represents a document with        
 #'  \itemize{
-#'    \item category. the Wikipedia category assigned to an article 
+#'    \item category. the Wikipedia category assigned to the article 
 #'    \item title. the title of the Wikipedia web article     
 #'  } 
 #'  
-#' @source The articles are downloaded from the 
+#' @source The Wikipedia articles are downloaded from the 
 #'  \href{http://en.wikipedia.org/wiki/Main_Page}{English Wikipedia}
 #'  with the help of 
-#'  \href{http://www.mediawiki.org/wiki/API:Main_page}{Media Wiki}
+#'  \href{http://www.mediawiki.org/wiki/API:Main_page}{Media Wiki} API. 
 #' 
-#' @seealso 
-#' \pkg{\link{lda}}
 #' 
 #' @aliases 
 #' wt.docs.metadata
@@ -86,31 +135,27 @@ NULL
 #' @format 
 #' \code{whales.vocab} a vector of unique words in the corpus vocabulary.
 #'  
-#' \code{whales.docs} a list of documents in the corpus, where each 
-#'  document is represented by a matrix (2 X U) of word frequencies.  
-#'  The variable U is the number of unique words in a document. Each  
-#'  matrix column represents a unique word in a document which 
-#'  contains the following variables    
+#' \code{whales.docs} a list of documents in the corpus. Each item (represents a 
+#'  document) is a matrix (2 X U) of word frequencies, where U represents the 
+#'  number of unique words in a document. Each column in the matrix represents 
+#'  a unique word in a document and contains    
 #'  \itemize{
-#'    \item vocabulary-id. the index of a term in the vocabulary (
-#'    starts with 0)  
-#'    \item frequency. the relative of a term in a given document   
-#'  }        
+#'    \item vocabulary-id. the index of the word in the vocabulary (starts with 0)  
+#'    \item frequency. the relative frequency of the word in the document   
+#'  }          
 #'  
-#' \code{whales.docs.metadata} a matrix of documents metadata, where 
-#' each row that represents a document contains       
+#' \code{whales.docs.metadata} a matrix of document (article) metadata, where 
+#' each row represents a document with        
 #'  \itemize{
-#'    \item category. the Wikipedia category assigned to an article 
+#'    \item category. the Wikipedia category assigned to the article 
 #'    \item title. the title of the Wikipedia web article     
 #'  } 
 #'  
-#' @source The articles are downloaded from the 
+#' @source The Wikipedia articles are downloaded from the 
 #'  \href{http://en.wikipedia.org/wiki/Main_Page}{English Wikipedia}
 #'  with the help of 
-#'  \href{http://www.mediawiki.org/wiki/API:Main_page}{Media Wiki}
+#'  \href{http://www.mediawiki.org/wiki/API:Main_page}{Media Wiki} API. 
 #' 
-#' @seealso 
-#' \pkg{\link{lda}}
 #' 
 #' @aliases 
 #' whales.docs.metadata
@@ -154,31 +199,27 @@ NULL
 #' @format 
 #' \code{bop.vocab} a vector of unique words in the corpus vocabulary.
 #'  
-#' \code{bop.docs} a list of documents in the corpus, where each 
-#'  document is represented by a matrix (2 X U) of word frequencies.  
-#'  The variable U is the number of unique words in a document. Each  
-#'  matrix column represents a unique word in a document which 
-#'  contains the following variables    
+#' \code{bop.docs} a list of documents in the corpus. Each item (represents a 
+#'  document) is a matrix (2 X U) of word frequencies, where U represents the 
+#'  number of unique words in a document. Each column in the matrix represents 
+#'  a unique word in a document and contains    
 #'  \itemize{
-#'    \item vocabulary-id. the index of a term in the vocabulary (
-#'    starts with 0)  
-#'    \item frequency. the relative of a term in a given document   
+#'    \item vocabulary-id. the index of the word in the vocabulary (starts with 0)  
+#'    \item frequency. the relative frequency of the word in the document   
 #'  }        
 #'  
-#' \code{bop.docs.metadata} a matrix of documents metadata, where 
-#' each row that represents a document contains       
+#' \code{bop.docs.metadata} a matrix of document (article) metadata, where 
+#' each row represents a document with        
 #'  \itemize{
-#'    \item category. the Wikipedia category assigned to an article 
+#'    \item category. the Wikipedia category assigned to the article 
 #'    \item title. the title of the Wikipedia web article     
 #'  } 
 #'  
-#' @source The articles are downloaded from the 
+#' @source The Wikipedia articles are downloaded from the 
 #'  \href{http://en.wikipedia.org/wiki/Main_Page}{English Wikipedia}
 #'  with the help of 
-#'  \href{http://www.mediawiki.org/wiki/API:Main_page}{Media Wiki}
+#'  \href{http://www.mediawiki.org/wiki/API:Main_page}{Media Wiki} API. 
 #' 
-#' @seealso 
-#' \pkg{\link{lda}}
 #' 
 #' @aliases 
 #' bop.docs.metadata

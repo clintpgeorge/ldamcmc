@@ -2,7 +2,7 @@
 #' This is a script to test the LDA full Gibbs sampler on the Wikipedia datasets 
 #'
 #' Examples:
-#' Rscript lda_gibbs_wikipedia_data.R "../source/" "wt16" "category" .1 .64
+#' Rscript lda_gibbs_wikipedia_data.R "../data-raw/" "wt16" "category" .1 .64
 #' #############################################################################
 
 ## Removes all objects in the current R state 
