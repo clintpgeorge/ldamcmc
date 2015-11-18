@@ -1,0 +1,61 @@
+# Diagnostics 
+
+library(ldamcmc); 
+library(mcmcse);  
+setwd(data.dir);
+
+############################ Visualize \hat{M} and \tilde{M} ################### 
+
+plot_meshgrid(model$m.hat, x.axis2, y.axis2, "alpha", "eta", "Estimate of m(h)");
+plot_meshgrid(model$m.tilde, x.axis2, y.axis2, "alpha", "eta", "Estimate of m(h)");
+
+
+############################ top.n \hat{M} values ################### 
+
+top.n <- 10 
+si <- sort(model$m.hat, decreasing=T, index.return=T) # "x"  "ix"
+msv <- rbind(h.grid[,si$ix[1:top.n]], model$m.hat[si$ix[1:top.n]])
+rownames(msv) <- c("alpha", "eta", "B(h)-est")
+print(msv, digits=3)
+
+############################ top.n \tilde{M} values ################### 
+
+top.n <- 10 
+si <- sort(model$m.tilde, decreasing=T, index.return=T) # "x"  "ix"
+msv <- rbind(h.grid[,si$ix[1:top.n]], model$m.tilde[si$ix[1:top.n]])
+rownames(msv) <- c("alpha", "eta", "B(h)-est")
+print(msv, digits=3)
+
+
+############################ Euclidean distance from \hat{\hat{h}} to the truth
+# this only works with synthetic data 
+
+sqrt(sum((h.grid[,si$ix[1]] - c(gen.alpha, gen.eta))^2))
+
+
+
+############################ Subgrid Occupancies ########################### 
+
+m <- 1e+2;
+occu.fn <- paste(fn.prefix, "-itr", tuning.iter, "-occu", sep = "")
+plot_meshgrid(model$st.grid.occupancies[, tuning.iter]/m, x.axis, y.axis, 
+              "\nalpha", "\neta", 
+              "\nOccupancies", "", 
+              occu.fn, 
+              "antiquewhite");
+
+
+############################ Subgrid Occupancies for an Iteration ######### 
+
+titer <- 2
+plot_meshgrid(model$st.grid.zetas[, titer], x.axis, y.axis, "alpha", "eta", "zetas")
+si <- sort(model$st.grid.zetas[, titer], decreasing=T, index.return=T) # "x"  "ix"
+sv <- rbind(st.grid[,si$ix[1:20]], model$st.grid.zetas[si$ix[1:20], titer])
+rownames(sv) <- c("alpha", "eta", "hat{B}(h)")
+print(sv, digits=3) # print best B(h) values and h values 
+
+
+hist(model$st.grid.occupancies[,titer], breaks=15)
+model$st.grid.occupancies[gen.st.grid.index,titer] # occupancy for the gen. h
+
+model$st.grid.occupancies

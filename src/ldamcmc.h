@@ -189,26 +189,165 @@ double calc_log_posterior(mat prior_theta,
   return lp;
 }
 
-RcppExport SEXP lda_fgs_lppv(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_, 
-                             SEXP doc_lengths_, SEXP topic_assignments_, 
-                             SEXP alpha_v_, SEXP eta_, SEXP max_iter_, 
-                             SEXP burn_in_, SEXP spacing_);
-RcppExport SEXP lda_fgs(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_, 
-                        SEXP doc_lengths_, SEXP topic_assignments_, 
-                        SEXP alpha_v_, SEXP eta_, SEXP max_iter_, SEXP burn_in_, 
-                        SEXP spacing_, SEXP save_z_, SEXP save_beta_, 
-                        SEXP save_theta_, SEXP save_lp_);
-RcppExport SEXP lda_fgs_blei_corpus(SEXP num_topics_, SEXP vocab_size_, 
-                                    SEXP doc_lengths_, SEXP docs_, 
-                                    SEXP topic_assignments_, SEXP alpha_v_, 
-                                    SEXP eta_, SEXP max_iter_, SEXP burn_in_, 
-                                    SEXP spacing_, SEXP save_z_, 
-                                    SEXP save_beta_, SEXP save_theta_, 
-                                    SEXP save_lp_);
-RcppExport SEXP lda_acgs(SEXP num_topics_, SEXP vocab_size_, SEXP word_ids_, 
-                         SEXP doc_lengths_, SEXP topic_assignments_, 
-                         SEXP alpha_v_, SEXP eta_, SEXP max_iter_, 
-                         SEXP burn_in_, SEXP spacing_, SEXP save_z_, 
-                         SEXP save_beta_, SEXP save_theta_, SEXP save_lp_);
-  
+/**
+ * Computes \nu_h(\psi)/\nu_{h_*}(\psi) for a given h, h_*, and \psi = (\beta, 
+ * \theta, z)
+ * 
+ * Reference: 
+ *  P. George and Doss (2015), Hyperparameter Selection in the Latent Dirichlet 
+ *  Allocation Model, Equation 2.3 
+ */
+double calc_prior_ratio(
+  mat beta, 
+  mat theta, 
+  double alpha, 
+  double eta, 
+  double base_alpha, 
+  double base_eta
+  ){
+  double num_docs = theta.n_cols; 
+  double num_topics = theta.n_rows;
+  double vocab_size = beta.n_cols; 
+  double ln_dir_ratio = num_docs * (lgamma(num_topics * alpha) 
+                              - (num_topics * lgamma(alpha)) 
+                              + (num_topics * lgamma(base_alpha)) 
+                              - lgamma(num_topics * base_alpha)) + 
+                        num_topics * (lgamma(vocab_size * eta) 
+                              - (vocab_size * lgamma(eta)) 
+                              + (vocab_size * lgamma(base_eta)) 
+                              - lgamma(vocab_size * base_eta)); 
+  double ln_bf = accu((alpha - base_alpha) * log(theta)) 
+                    + accu((eta - base_eta) * log(beta)) 
+                    + ln_dir_ratio; 
+  return exp(ln_bf);
+}
+
+RcppExport SEXP lda_fgs(
+    SEXP num_topics_, 
+    SEXP vocab_size_, 
+    SEXP word_ids_, 
+    SEXP doc_lengths_, 
+    SEXP topic_assignments_, 
+    SEXP alpha_v_, 
+    SEXP eta_, 
+    SEXP max_iter_, 
+    SEXP burn_in_, 
+    SEXP spacing_, 
+    SEXP save_z_, 
+    SEXP save_beta_, 
+    SEXP save_theta_, 
+    SEXP save_lp_
+);
+
+RcppExport SEXP lda_fgs_blei_corpus(
+    SEXP num_topics_, 
+    SEXP vocab_size_, 
+    SEXP doc_lengths_, 
+    SEXP docs_, 
+    SEXP topic_assignments_, 
+    SEXP alpha_v_, 
+    SEXP eta_, 
+    SEXP max_iter_, 
+    SEXP burn_in_, 
+    SEXP spacing_, 
+    SEXP save_z_, 
+    SEXP save_beta_, 
+    SEXP save_theta_, 
+    SEXP save_lp_
+);
+
+RcppExport SEXP lda_fgs_lppv(
+    SEXP num_topics_, 
+    SEXP vocab_size_, 
+    SEXP word_ids_, 
+    SEXP doc_lengths_, 
+    SEXP topic_assignments_,
+    SEXP alpha_v_,
+    SEXP eta_,
+    SEXP max_iter_, 
+    SEXP burn_in_,
+    SEXP spacing_
+);
+
+RcppExport SEXP lda_acgs(
+    SEXP num_topics_, 
+    SEXP vocab_size_, 
+    SEXP word_ids_, 
+    SEXP doc_lengths_, 
+    SEXP topic_assignments_, 
+    SEXP alpha_v_, 
+    SEXP eta_, 
+    SEXP max_iter_, 
+    SEXP burn_in_, 
+    SEXP spacing_, 
+    SEXP save_z_, 
+    SEXP save_beta_,
+    SEXP save_theta_, 
+    SEXP save_lp_
+);
+
+
+RcppExport SEXP lda_fgs_st(
+  SEXP num_topics_, 
+  SEXP vocab_size_, 
+  SEXP word_ids_, 
+  SEXP doc_lengths_, 
+  SEXP topic_assignments_, 
+  SEXP h_grid_, 
+  SEXP st_grid_, 
+  SEXP st_grid_nbrs_, 
+  SEXP init_st_grid_index_, 
+  SEXP init_st_grid_zetas_, 
+  SEXP max_iter_, 
+  SEXP burn_in_, 
+  SEXP spacing_, 
+  SEXP tuning_iter_, 
+  SEXP save_z_, 
+  SEXP save_beta_, 
+  SEXP save_theta_, 
+  SEXP save_st_grid_index_, 
+  SEXP save_lp_,
+  SEXP save_hat_ratios_,
+  SEXP save_tilde_ratios_,
+  SEXP verbose_
+  );
+
+RcppExport SEXP lda_fgs_hs(
+    SEXP num_topics_, 
+    SEXP vocab_size_, 
+    SEXP word_ids_, 
+    SEXP doc_lengths_, 
+    SEXP topic_assignments_, 
+    SEXP alpha_, 
+    SEXP eta_, 
+    SEXP h_grid_, 
+    SEXP max_iter_, 
+    SEXP burn_in_, 
+    SEXP spacing_, 
+    SEXP save_z_, 
+    SEXP save_beta_, 
+    SEXP save_theta_, 
+    SEXP save_Bh_, 
+    SEXP save_lp_
+);
+
+RcppExport SEXP lda_acgs_hs(
+    SEXP num_topics_, 
+    SEXP vocab_size_, 
+    SEXP word_ids_, 
+    SEXP doc_lengths_, 
+    SEXP topic_assignments_, 
+    SEXP alpha_, 
+    SEXP eta_, 
+    SEXP h_grid_, 
+    SEXP max_iter_, 
+    SEXP burn_in_, 
+    SEXP spacing_, 
+    SEXP save_z_, 
+    SEXP save_beta_, 
+    SEXP save_theta_, 
+    SEXP save_Bh_, 
+    SEXP save_lp_
+);
+						 
 #endif
