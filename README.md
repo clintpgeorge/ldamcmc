@@ -4,9 +4,10 @@ ldamcmc
 This **R** package implements several Markov chain Monte Carlo (MCMC) algorithms for the latent Dirichlet allocation (LDA) model. 
 
 
-Dependencies (R packages) 
+Dependencies
 ----------------------------
 
+This package uses the following R packages, which are already included in this R package.   
 * **Rcpp**
 * **RcppArmadillo** based on uses the **Armadillo** C++ package 
 * **MCMCpack** 
