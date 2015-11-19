@@ -6,7 +6,8 @@
 \usage{
 plot_meshgrid(values, x.axis, y.axis, xlabel, ylabel, zlabel, main.title = "",
   plot.file = "", surface.color = "lightblue", zlim = range(values, na.rm
-  = TRUE))
+  = TRUE), margin = c(5 - 3, 4 - 0, 4 - 3, 2 - 2), cex.axis = 1.3,
+  cex.lab = 1.5, cex = 3)
 }
 \arguments{
 \item{values}{the z values}
@@ -22,7 +23,15 @@ plot_meshgrid(values, x.axis, y.axis, xlabel, ylabel, zlabel, main.title = "",
 \item{surface.color}{the plot surface color. The default is light blue.}
 
 \item{zlim}{the range of \code{z} values for the \code{\link{persp}} plot.
-  The default is \code{range(values, na.rm=TRUE)}}
+The default is \code{range(values, na.rm=TRUE)}}
+
+\item{margin}{the margin for the plot}
+
+\item{cex.axis}{cex value of the axis for the plot}
+
+\item{cex}{cex value of the plot}
+
+\item{cex.label}{cex value of the x-y-z labels for the plot}
 }
 \description{
 Plots a mesh over the \code{x-y} grid with the help of

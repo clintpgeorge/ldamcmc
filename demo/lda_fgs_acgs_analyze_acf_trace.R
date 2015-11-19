@@ -1,8 +1,8 @@
 #' #############################################################################
-#' This script is used to generate plots of the ACF and trace of \code{z}, 
-#' \code{\beta}, and \code{\theta} samples generated from the  from the 
-#' augmented collapsed Gibbs Sampler (ACGS) and the full Gibbs sampler (FGS) of 
-#' LDA
+#' 
+#' This script plots the ACF and trace of \code{z}, \code{\beta}, and 
+#' \code{\theta} samples generated from the augmented collapsed Gibbs Sampler 
+#' (ACGS) and the full Gibbs sampler (FGS) of the LDA model 
 #' 
 #' Note: All images and RData are saved to the current working directory. 
 #' 

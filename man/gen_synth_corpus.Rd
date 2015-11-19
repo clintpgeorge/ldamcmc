@@ -30,6 +30,7 @@ V              <- 20
 D              <- 100
 gen.alpha.v    <- array(7, c(K, 1));
 gen.eta.v      <- array(3, c(1, V));
+lambda.hat     <- 80
 
 ## Generates the synthetic beta.m
 beta.m         <- matrix(1e-2, nrow=K, ncol=V)

@@ -21,6 +21,7 @@ Computes cosine scores between documents in a corpus
 Last modified on: May 24, 2015
 }
 \seealso{
-Other corpus: \code{\link{calc_doc_tf}}
+Other corpus: \code{\link{calc_doc_tf}};
+  \code{\link{gen_corpus}}
 }
 

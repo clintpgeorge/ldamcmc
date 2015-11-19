@@ -25,6 +25,7 @@ Computes term frequency (tf) vectors for documents
 Last modified on: May 24, 2015
 }
 \seealso{
-Other corpus: \code{\link{calc_doc_cos}}
+Other corpus: \code{\link{calc_doc_cos}};
+  \code{\link{gen_corpus}}
 }
 

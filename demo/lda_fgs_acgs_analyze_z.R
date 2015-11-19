@@ -1,7 +1,8 @@
 #' #############################################################################
-#' This script is used to compare the z samples (word topic allocations)  
-#' from the augmented collapsed Gibbs Sampler (ACGS) and the full Gibbs sampler 
-#' (FGS) of LDA
+#' 
+#' This script compares the z samples (word topic allocations) generated from 
+#' the augmented collapsed Gibbs Sampler (ACGS) and the full Gibbs sampler (FGS)  
+#' of the LDA model 
 #' 
 #' Note: All images and RData are saved to the current working directory.
 #' 

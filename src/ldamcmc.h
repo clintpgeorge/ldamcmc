@@ -25,7 +25,7 @@ unsigned int sample_uniform_int(unsigned int K){
 }
 
 /**
-* Samples from a given multimomial probability vector
+* Samples from a multimomial
 *
 * Arguments:
 * 		theta - the Multinomial probability vector
@@ -50,13 +50,13 @@ unsigned int sample_multinomial (vec theta) {
 }
 
 /**
-* Samples from a Dirichlet distribution given a set of hyperparameters
+* Samples from a Dirichlet distribution given a hyperparameter
 * 
 * Aruguments:
-* 		num_elements - the dimentionality of the Dirichlet distribution 
-* 		alpha - the hyperparameter vector which is in the column vector format  
+* 		num_elements - the dimention of the Dirichlet distribution 
+* 		alpha - the hyperparameter vector (a column vector)  
 * Returns: 
-* 		the Dirichlet sample in the column vector format   
+* 		the Dirichlet sample (a column vector) 
 */
 vec sample_dirichlet(unsigned int num_elements, vec alpha){
   
@@ -72,13 +72,13 @@ vec sample_dirichlet(unsigned int num_elements, vec alpha){
 }
 
 /**
-* Samples from a Dirichlet distribution given a set of hyperparameters
+* Samples from a Dirichlet distribution given a hyperparameter
 * 
 * Aruguments:
-* 		num_elements - the dimentionality of the Dirichlet distribution 
-* 		alpha - the hyperparameter vector which is in the row vector format  
+* 		num_elements - the dimention of the Dirichlet distribution 
+* 		alpha - the hyperparameter vector (a column vector)  
 * Returns: 
-* 		the Dirichlet sample in the row vector format   
+* 		the Dirichlet sample (a column vector) 
 */
 rowvec sample_dirichlet_row_vec (unsigned int num_elements, rowvec alpha){
   

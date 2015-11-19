@@ -1,17 +1,20 @@
 #' Plots the estimates \hat{M}(h) and \tilde{M}(h) and MCSE of the estimates 
 #' \hat{M}(h) and \tilde{M}(h): 
 #' 
-#' This script is used generate plots of estimates of m(h) and MCSE of the 
-#' estimates of m(h) for the sythetic datasets used in the LDA paper 
+#' This script plots the estimates of m(h) and MCSE of the estimates of m(h) for 
+#' for the sythetic datasets used in the LDA paper 
 #'  
 #'  
 #' Note: Set the flags save.grid.ratios and save.tilde.est to 1 for the serial 
 #' tempering runs  
 #' 
+#' See also: 
+#'  lda_fgs_st_hs_synth_h25.R
+#' 
 #' Versions: 
-#' May 26, 2015 - Initial version
-#' September 19, 2015 - added custom plot_meshgrid 
-#' Nov 13, 2015 - uses the ldamcmc package 
+#'  May 26, 2015 - Initial version
+#'  Nov 18, 2015 - Code cleanup 
+#'  
 #' 
 
 library(ldamcmc); 
@@ -19,64 +22,6 @@ library(mcmcse);
 
 setwd(data.dir)
 
-plot_meshgrid <- function(values, x.axis, y.axis, xlabel, ylabel, zlabel, 
-                          main.title="", plot.file="", 
-                          surface.color="lightblue", 
-                          zlim=range(values, na.rm=TRUE), 
-                          margin=c(5-3, 4-0, 4-3, 2-2), # c(bottom, left, top, right)
-                          cex.axis=1.5, cex.lab=1.7, cex=3){ # specific for synthetic cases 
-  
-  x.axis.len <- length(x.axis);
-  y.axis.len <- length(y.axis);
-  
-  z <- array(0, dim=c(x.axis.len, y.axis.len));
-  count <- 1;
-  for (i in 1:x.axis.len){
-    for (j in 1:y.axis.len){
-      z[i,j] <- values[count];
-      count <- count + 1;
-    }
-  }
-  
-  if (plot.file == ''){ # When there is no file given to save 
-    persp(x.axis, y.axis, z, 
-          theta = 30, phi = 30, ltheta = 120, 
-          expand = 0.5, col = surface.color,
-          shade = 0.05, ticktype = "detailed",
-          xlab = xlabel, ylab = ylabel, zlab = zlabel, 
-          cex = cex, cex.lab = cex.lab, cex.axis = cex.axis, # lwd=0.2, border="gray40",
-          main=main.title, zlim=zlim);
-  }
-  else { 
-    op <- par(bg = "white")
-    trellis.device(postscript, file=paste(plot.file, ".eps", sep=""), 
-                   height=5.5, width=7, horiz=F, title=main.title, onefile=T)
-    par(mar=margin + .1) # c(bottom, left, top, right)
-    persp(x.axis, y.axis, z, 
-          theta = 30, phi = 30, ltheta = 120, 
-          expand = 0.5, col = surface.color,
-          shade = 0.05, ticktype = "detailed",
-          xlab = xlabel, ylab = ylabel, zlab = zlabel, 
-          cex = cex, cex.lab = cex.lab, cex.axis = cex.axis, # lwd=0.2, border="gray40",
-          main=main.title, zlim=zlim);
-    par(op)
-    dev.off() 
-    
-    op <- par(bg = "white")
-    trellis.device(pdf, file=paste(plot.file, ".pdf", sep=""), height=5.5, 
-                   width=7, title=main.title, onefile=T)
-    par(mar=margin + .1) # c(bottom, left, top, right)
-    persp(x.axis, y.axis, z, 
-          theta = 30, phi = 30, ltheta = 120, 
-          expand = 0.5, col = surface.color,
-          shade = 0.05, ticktype = "detailed",
-          xlab = xlabel, ylab = ylabel, zlab = zlabel, 
-          cex = cex, cex.lab = cex.lab, cex.axis = cex.axis, # lwd=0.2, border="gray40",
-          main=main.title, zlim=zlim);
-    par(op)
-    dev.off() 
-  }
-}
 
 mcse.fn <- function(values){
   ret <- mcse(values, g=mean, method="bm");
@@ -124,39 +69,70 @@ print.top.M.est(model$m.tilde);
 
 # Saves plots -------------------------------------------------------------
 
+margin <- c(5-3, 4-0, 4-3, 2-2) # c(bottom, left, top, right)
+cex.axis <- 1.5 
+cex.lab <- 1.7 
+cex <- 3
 B.fn <- paste(fn.prefix, "-itr", tuning.iter, "-m(h)", sep = "")
+
 plot_meshgrid(m.hat.mcse[1,], x.axis2, y.axis2, 
               "\nalpha", "\neta", 
               "\nEstimate of m(h)", "", 
               paste(B.fn, "-hat" , sep=""), 
-              "lightblue");
+              "lightblue", 
+              margin=margin,
+              cex.axis=cex.axis,
+              cex.lab=cex.lab,
+              cex=cex);
+
 plot_meshgrid(m.hat.mcse[2,], x.axis2, y.axis2, 
               "\nalpha", "\neta", 
               "\nMCSE of the Estimate of m(h)", "", 
               paste(B.fn, "-hat-mcse" , sep=""), 
-              "orange");
+              "orange", 
+              margin=margin,
+              cex.axis=cex.axis,
+              cex.lab=cex.lab,
+              cex=cex);
 
 plot_meshgrid(m.tilde.mcse[1,], x.axis2, y.axis2, 
               "\nalpha", "\neta", 
               "\nEstimate of m(h)", "", 
               paste(B.fn, "-tilde" , sep=""), 
-              "lightblue");
+              "lightblue", 
+              margin=margin,
+              cex.axis=cex.axis,
+              cex.lab=cex.lab,
+              cex=cex);
+
 plot_meshgrid(m.tilde.mcse[2,], x.axis2, y.axis2, 
               "\nalpha", "\neta", 
               "\nMCSE of the Estimate of m(h)", "", 
               paste(B.fn, "-tilde-mcse" , sep=""), 
-              "orange");
+              "orange", 
+              margin=margin,
+              cex.axis=cex.axis,
+              cex.lab=cex.lab,
+              cex=cex);
 
 
-# # Saves estimates of m(h)
-# 
-# plot_meshgrid(model$m.hat, x.axis2, y.axis2, 
-#               "alpha", "eta", 
-#               "Estimate of m(h)", "", 
-#               paste(fn.prefix, "-m-hat", sep=""),
-#               "lightblue");
-# plot_meshgrid(model$m.tilde, x.axis2, y.axis2, 
-#               "alpha", "eta", 
-#               "Estimate of m(h)", "", 
-#               paste(fn.prefix, "-m-tilde", sep=""),
-#               "lightblue");
+# Plots the estimates of m(h), computed as an online average 
+
+plot_meshgrid(model$m.hat, x.axis2, y.axis2, 
+              "alpha", "eta", 
+              "Estimate of m(h)", "", 
+              paste(fn.prefix, "-m-hat", sep=""),
+              "lightblue", 
+              margin=margin,
+              cex.axis=cex.axis,
+              cex.lab=cex.lab,
+              cex=cex);
+plot_meshgrid(model$m.tilde, x.axis2, y.axis2, 
+              "alpha", "eta", 
+              "Estimate of m(h)", "", 
+              paste(fn.prefix, "-m-tilde", sep=""),
+              "lightblue", 
+              margin=margin,
+              cex.axis=cex.axis,
+              cex.lab=cex.lab,
+              cex=cex);

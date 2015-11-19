@@ -81,7 +81,11 @@ gen_meshgrid <- function(x.axis, y.axis){
 #' @param surface.color the plot surface color. The default is light blue.
 #' @param zlim the range of \code{z} values for the \code{\link{persp}} plot.
 #'   The default is \code{range(values, na.rm=TRUE)}
-#'   
+#' @param margin the margin for the plot 
+#' @param cex.axis cex value of the axis for the plot 
+#' @param cex.label cex value of the x-y-z labels for the plot
+#' @param cex cex value of the plot
+#'     
 #' @seealso \code{\link{persp}} \code{\link[lattice]{trellis.device}}
 #'   
 #' @import lattice
@@ -94,10 +98,22 @@ gen_meshgrid <- function(x.axis, y.axis){
 #' plot_meshgrid(values, x.axis, y.axis, "alpha", "eta", "Estimate of B(h)");
 #'               
 #'  
-plot_meshgrid <- function(values, x.axis, y.axis, xlabel, ylabel, zlabel, 
-                          main.title="", plot.file="", 
-                          surface.color="lightblue", 
-                          zlim=range(values, na.rm=TRUE)){
+plot_meshgrid <- function(
+  values, 
+  x.axis, 
+  y.axis, 
+  xlabel, 
+  ylabel, 
+  zlabel, 
+  main.title="", 
+  plot.file="", 
+  surface.color="lightblue", 
+  zlim=range(values, na.rm=TRUE), 
+  margin=c(5-3, 4-0, 4-3, 2-2), # c(bottom, left, top, right)
+  cex.axis=1.3, 
+  cex.lab=1.5, 
+  cex=3
+){
   
   x.axis.len <- length(x.axis);
   y.axis.len <- length(y.axis);
@@ -117,20 +133,20 @@ plot_meshgrid <- function(values, x.axis, y.axis, xlabel, ylabel, zlabel,
           expand = 0.5, col = surface.color,
           shade = 0.05, ticktype = "detailed",
           xlab = xlabel, ylab = ylabel, zlab = zlabel, 
-          cex = 3, cex.lab = 1.5, cex.axis = 1.3, # lwd=0.2, border="gray40",
+          cex = cex, cex.lab = cex.lab, cex.axis = cex.axis, # lwd=0.2, border="gray40",
           main=main.title, zlim=zlim);
   }
   else { 
     op <- par(bg = "white")
     trellis.device(postscript, file=paste(plot.file, ".eps", sep=""), 
                    height=5.5, width=7, horiz=F, title=main.title, onefile=T)
-    par(mar=c(5-3, 4-2, 4-3, 2-2) + .1) # c(bottom, left, top, right)
+    par(mar=margin + .1) # c(bottom, left, top, right)
     persp(x.axis, y.axis, z, 
           theta = 30, phi = 30, ltheta = 120, 
           expand = 0.5, col = surface.color,
           shade = 0.05, ticktype = "detailed",
           xlab = xlabel, ylab = ylabel, zlab = zlabel, 
-          cex = 3, cex.lab = 1.5, cex.axis = 1.3, # lwd=0.2, border="gray40",
+          cex = cex, cex.lab = cex.lab, cex.axis = cex.axis, # lwd=0.2, border="gray40",
           main=main.title, zlim=zlim);
     par(op)
     dev.off() 
@@ -138,13 +154,13 @@ plot_meshgrid <- function(values, x.axis, y.axis, xlabel, ylabel, zlabel,
     op <- par(bg = "white")
     trellis.device(pdf, file=paste(plot.file, ".pdf", sep=""), height=5.5, 
                    width=7, title=main.title, onefile=T)
-    par(mar=c(5-3, 4-2, 4-3, 2-2) + .1) # c(bottom, left, top, right)
+    par(mar=margin + .1) # c(bottom, left, top, right)
     persp(x.axis, y.axis, z, 
           theta = 30, phi = 30, ltheta = 120, 
           expand = 0.5, col = surface.color,
           shade = 0.05, ticktype = "detailed",
           xlab = xlabel, ylab = ylabel, zlab = zlabel, 
-          cex = 3, cex.lab = 1.5, cex.axis = 1.3, # lwd=0.2, border="gray40",
+          cex = cex, cex.lab = cex.lab, cex.axis = cex.axis, # lwd=0.2, border="gray40",
           main=main.title, zlim=zlim);
     par(op)
     dev.off() 

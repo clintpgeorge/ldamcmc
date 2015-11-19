@@ -4,11 +4,13 @@
 #' 4) in the paper "Principled Selection of Hyperparameters in the Latent 
 #' Dirichlet Allocation Model".
 #' 
-#' Last updated on: November 10, 2015 
+#' Versions: 
+#'  November 10, 2015 - Initial version  
 #' 
 #' Example: 
-#' Rscript lda_fgs_rho2.R "D:/workspace/ldamcmc/data-raw" "felines" "category" .5 .155 1983 61000 1000 50
-#' Rscript lda_fgs_rho2.R "D:/workspace/ldamcmc/data-raw" "rec" "category" .46 .09 2015 61000 1000 50
+#'  Rscript lda_fgs_rho2.R "D:/workspace/ldamcmc/data-raw" "felines" "category" .5 .155 1983 61000 1000 50
+#'  Rscript lda_fgs_rho2.R "D:/workspace/ldamcmc/data-raw" "rec" "category" .46 .09 2015 61000 1000 50
+#' 
 #' #############################################################################
 
 ## Loads necessary libraries and sets global variables 

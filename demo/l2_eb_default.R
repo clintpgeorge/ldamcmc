@@ -1,6 +1,8 @@
-eb.eta <- .46 
-eb.alpha <- .09 
-K <- 4
+# Edit the following three lines 
+
+eb.eta <- .46 #1 
+eb.alpha <- .09 #2
+K <- 4 #3
 
 heb <- c(eb.eta, eb.alpha)
 hdr <- c(1/K, 1/K) # Gensim package (2010)
