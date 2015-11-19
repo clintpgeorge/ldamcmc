@@ -9,7 +9,7 @@ Dependencies
 
 This package uses the following R packages, which are already included in this R package.   
 * **Rcpp**
-* **RcppArmadillo** based on uses the **Armadillo** C++ package 
+* **RcppArmadillo** based on the **Armadillo** C++ package 
 * **MCMCpack** 
 * **lattice**
 
