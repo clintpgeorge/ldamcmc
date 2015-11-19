@@ -32,5 +32,5 @@ Acknowledgements
 
 This research is partially supported by generous contributions from the International Center for Automated Research at the University of Florida Levin College of Law. 
 
-The author would like to express sincere thanks to Dr. Hani Doss for all the insightful comments and advice on this research. The author also would like to thank Dr. Joseph N. Wilson, Zhe Chen, and Wei Xia for the valuable discussions and critics that helped throughout the development of this project.
+The authors would like to thank Dr. Joseph N. Wilson, Zhe Chen, and Wei Xia for the valuable discussions and critics that helped throughout the development of this project.
 
