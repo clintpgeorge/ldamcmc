@@ -105,8 +105,8 @@ plot(h.grid[1,alpha.idx1], I.tilde.est[alpha.idx1],
 lines(h.grid[1,alpha.idx2], I.tilde.est[alpha.idx2], 
       type="o", pch=22, lty=3, col="red", lwd=2, cex = 1, cex.lab = 1.5, 
       cex.axis = 1.3)
-legend(.1, .5, c("eta = 0.35","eta = 0.45"), 
-       cex=1.3, col=c("blue","red"), pch=21:22, lty=1:3);
+legend(.1, .6, c("eta = 0.35","eta = 0.45"), 
+       cex=1., col=c("blue","red"), pch=21:22, lty=1:3);
 
 
 # hat estimates -----------------------------------------------------------
@@ -130,6 +130,6 @@ plot(h.grid[1,alpha.idx1], I.hat.est[alpha.idx1],
 lines(h.grid[1,alpha.idx2], I.hat.est[alpha.idx2], 
       type="o", pch=22, lty=3, col="red", lwd=2, cex = 1, cex.lab = 1.5, 
       cex.axis = 1.3)
-legend(.1, .5, c("eta = 0.35","eta = 0.45"), 
-       cex=1.3, col=c("blue","red"), pch=21:22, lty=1:3);
+legend(.1, .6, c("eta = 0.35","eta = 0.45"), 
+       cex=1, col=c("blue","red"), pch=21:22, lty=1:3);
 
