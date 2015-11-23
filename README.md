@@ -9,6 +9,26 @@ This **R** package, **ldamcmc**, implements several Markov chain Monte Carlo (MC
 * Hyperparameter selection in the LDA model (George and Doss 2015) 
 * Posterior predictive checking (PPC, Chen and Doss 2015)
 
+For package documentation run 
+
+``` help("ldamcmc") ```
+
+in an R console. All major functions and datasets are documented and linked to the package index. Raw data files for each dataset are available in the **data-raw** folder. To load raw data see ``` demo/load_raw_data.R  ```.    
+
+To see all demo R scripts available in this package, run 
+
+``` demo(package="ldamcmc") ```
+
+in an R console. Some scripts can be executed via running  
+
+``` demo(file-name, package="ldamcmc") ```
+
+in an R console. The rest of them may require commandline arguments for execution. Please see the documentation provided in each script before execution.    
+
+Authors
+----------------------------
+* [Clint P. George](http://www.cise.ufl.edu/~cgeorge) (Please contact for questions and comments)
+* [Hani Doss](http://www.stat.ufl.edu/~doss) 
 
 Dependencies
 ----------------------------
