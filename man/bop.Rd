@@ -3,60 +3,84 @@
 \docType{data}
 \name{bop}
 \alias{bop}
+\alias{bop.class.labels}
+\alias{bop.doc.N}
 \alias{bop.docs}
 \alias{bop.docs.metadata}
+\alias{bop.ds}
 \alias{bop.vocab}
-\title{The Birds of Prey dataset}
-\format{\code{bop.vocab} a vector of unique words in the corpus vocabulary.
+\title{Birds of Prey (C-9)}
+\format{\code{vocab} a vector of unique words in the corpus vocabulary.
  
-\code{bop.docs} a list of documents in the corpus. Each item (represents a 
+\code{docs} a list of documents in the corpus. Each item (represents a 
  document) is a matrix (2 X U) of word frequencies, where U represents the 
  number of unique words in a document. Each column in the matrix represents 
  a unique word in a document and contains    
  \itemize{
    \item vocabulary-id. the index of the word in the vocabulary (starts with 0)  
    \item frequency. the relative frequency of the word in the document   
- }        
+ }         
  
-\code{bop.docs.metadata} a matrix of document (article) metadata, where 
-each row represents a document with        
+\code{docs.metadata} a matrix of document (article) metadata, where each 
+row represents a document with        
  \itemize{
    \item category. the Wikipedia category assigned to the article 
    \item title. the title of the Wikipedia web article     
+ } 
+ 
+\code{doc.N} a vector of word counts of documents in the corpus 
+
+\code{num.docs} the number of documents in the corpus 
+
+\code{class.labels} a vector of unique categories (classes) in the corpus 
+
+\code{ds.name} the corpus name (string)
+
+\code{ds} a list of two equal-length vectors       
+ \itemize{
+   \item wid. vocabulary ids of the instances of words in the corpus (a 
+   vector)
+   \item did. document indices of the instances of words in the corpus (a 
+   vector)  
  }}
 \source{
-The Wikipedia articles are downloaded from the 
+Articles are downloaded from the 
  \href{http://en.wikipedia.org/wiki/Main_Page}{English Wikipedia}
  with the help of 
  \href{http://www.mediawiki.org/wiki/API:Main_page}{Media Wiki} API.
 }
 \usage{
-\code{data(bop.vocab)}
-\code{data(bop.docs)}
-\code{data(bop.docs.metadata)}
+\code{data(bop)}
 }
 \description{
 A subset of Wikipedia artricles under the Wikipedia category 
-\href{http://en.wikipedia.org/wiki/Category:Birds_of_prey}{Birds 
-of Prey} formatted for running the LDA Gibbs sampling 
-algorithms. This dataset contains 304 Wikipedia articles from  
-the following Wikipedia categories. 
+\href{http://en.wikipedia.org/wiki/Category:Birds_of_prey}{Birds of Prey}, 
+formatted for running various Gibbs sampling algorithms of the latent 
+Dirichlet allocation model. This dataset contains 304 Wikipedia articles from  
+the following Wikipedia categories:
  \itemize{
-   \item Category:Eagles 
-   \item Category:Falco (genus)
-   \item Category:Falconry
-   \item Category:Falcons
-   \item Category:Harriers (birds)
-   \item Category:Hawks 
-   \item Category:Kites (birds)
-   \item Category:Owls 
+   \item Eagles 
+   \item Falco (genus)
+   \item Falconry
+   \item Falcons
+   \item Harriers (birds)
+   \item Hawks 
+   \item Kites (birds)
+   \item Owls 
  }
 }
+\note{
+Created on November 21, 2015
+}
 \author{
-Clint P. George, April 15, 2014
+Clint P. George
 }
 \seealso{
-Other datasets: \code{\link{whales}}, \code{\link{wt16}},
-  \code{\link{wt}}
+Other datasets: \code{\link{autos-motorcycles}},
+  \code{\link{canis}}, \code{\link{cats}},
+  \code{\link{felines}}, \code{\link{ibm-mac}},
+  \code{\link{med-christian-baseball}}, \code{\link{rec}},
+  \code{\link{sci}}, \code{\link{whales}},
+  \code{\link{wt16m}}, \code{\link{wt16}}, \code{\link{wt}}
 }
 

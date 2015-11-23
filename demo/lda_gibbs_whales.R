@@ -1,17 +1,13 @@
 #' #############################################################################
 #' This is a script to test the LDA full Gibbs sampler on the Wikipedia dataset
 #' whales  
-#'
+#' 
 #' #############################################################################
 
 # Loads necessary libraries and sets global variables  --------------------
 
-rm(list=ls()); # Removes all objects in the current R state 
 library(ldamcmc)
 
-
-prefix         <- "whales"
-class.type     <- "category"
 alpha          <- .1
 eta            <- .4
 SEED           <- 1983 
@@ -26,21 +22,13 @@ set.seed(SEED)
 
 
 # Loads data --------------------------------------------------------------
+# Here, the dataset chosen is whales. We can any available data for this purpose 
+# e.g., wt, felines, cats, canis, etc. 
 
+data(whales) # See help(whales)
 
-# See help(whales)
-data(whales.vocab)
-data(whales.docs)
-data(whales.docs.metadata)
-
-ds <- vectorize_docs(whales.docs)
-doc.N <- calc_doc_lengths(whales.docs)
-num.docs <- nrow(whales.docs.metadata)
-
-class.labels <- levels(whales.docs.metadata[, class.type])
 K <- length(class.labels) # the number of topics 
-V <- length(whales.vocab) # the vocabulary size 
-
+V <- length(vocab) # the vocabulary size 
 
 
 # Gibbs sampling  ---------------------------------------------------------
@@ -64,13 +52,13 @@ model <- lda_acgs(K, V, ds$wid+1, doc.N, alpha.v, eta, max.iter, burn.in,
 # See help(calc_top_topic_words)
 last.beta.sample <- model$beta[,,max.iter-burn.in]; # takes the last sample 
 cat("\nMost probable words from each topic (using the last sample):\n")
-calc_top_topic_words(last.beta.sample, whales.vocab, num.words=20, num.digits=2)
+calc_top_topic_words(last.beta.sample, vocab, num.words=20, num.digits=2)
 
 
 # Saves every object into a file  -----------------------------------------
 
 
-rdata.file <- paste(prefix, "-gibbs-h(", eta, ",", alpha, ").RData", sep="")[1]
+rdata.file <- paste(ds.name, "-gibbs-h(", eta, ",", alpha, ").RData", sep="")[1]
 save.image(rdata.file)
 cat("\nRData is saved to:", rdata.file)
 

@@ -7,7 +7,7 @@
     devtools.cleandoc = T, 
     devtools.desc.author = "'Clint P. George <cgeorge@cise.ufl.edu> [aut, cre] and Hani Doss <hdoss@stat.ufl.edu> [aut]'", 
     devtools.desc.license = "MIT", 
-    devtools.desc = c("Description"="Implementations of Gibbs sampling algorithms for the latent Dirichlet allocation (LDA) model ")
+    devtools.desc = c("Description"="Markov chain Monte Carlo Algorithms for the Latent Dirichlet Allocation Model")
     )
 }
 

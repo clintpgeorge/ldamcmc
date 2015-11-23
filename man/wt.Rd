@@ -3,50 +3,75 @@
 \docType{data}
 \name{wt}
 \alias{wt}
+\alias{wt.class.labels}
+\alias{wt.doc.N}
 \alias{wt.docs}
 \alias{wt.docs.metadata}
+\alias{wt.ds}
 \alias{wt.vocab}
-\title{The Whales and Tires dataset}
-\format{\code{wt.vocab} a vector of unique words in the corpus vocabulary.
+\title{Whales and Tires}
+\format{\code{vocab} a vector of unique words in the corpus vocabulary.
  
-\code{wt.docs} a list of documents in the corpus. Each item (represents a 
+\code{docs} a list of documents in the corpus. Each item (represents a 
  document) is a matrix (2 X U) of word frequencies, where U represents the 
  number of unique words in a document. Each column in the matrix represents 
  a unique word in a document and contains    
  \itemize{
    \item vocabulary-id. the index of the word in the vocabulary (starts with 0)  
    \item frequency. the relative frequency of the word in the document   
- }      
+ }         
  
-\code{wt.docs.metadata} a matrix of document (article) metadata, where each 
+\code{docs.metadata} a matrix of document (article) metadata, where each 
 row represents a document with        
  \itemize{
    \item category. the Wikipedia category assigned to the article 
    \item title. the title of the Wikipedia web article     
+ } 
+ 
+\code{doc.N} a vector of word counts of documents in the corpus 
+
+\code{num.docs} the number of documents in the corpus 
+
+\code{class.labels} a vector of unique categories (classes) in the corpus 
+
+\code{ds.name} the corpus name (string)
+
+\code{ds} a list of two equal-length vectors       
+ \itemize{
+   \item wid. vocabulary ids of the instances of words in the corpus (a 
+   vector)
+   \item did. document indices of the instances of words in the corpus (a 
+   vector)  
  }}
 \source{
-The Wikipedia articles are downloaded from the 
+Articles are downloaded from the 
  \href{http://en.wikipedia.org/wiki/Main_Page}{English Wikipedia}
  with the help of 
  \href{http://www.mediawiki.org/wiki/API:Main_page}{Media Wiki} API.
 }
 \usage{
-\code{data(wt.vocab)}
-\code{data(wt.docs)}
-\code{data(wt.docs.metadata)}
+\code{data(wt)}
 }
 \description{
 A subset of Wikipedia artricles under the Wikipedia categories  
 \href{http://en.wikipedia.org/wiki/Category:Whales}{Whales} 
-and \href{http://en.wikipedia.org/wiki/Category:Tires}{Tires} 
-formatted for running the LDA Gibbs sampling algorithms. This 
-dataset contains 84 Wikipedia articles.
+and \href{http://en.wikipedia.org/wiki/Category:Tires}{Tires},  
+formatted for running various Gibbs sampling algorithms of the latent 
+Dirichlet allocation model. This dataset contains 84 Wikipedia articles.
+}
+\note{
+Created on November 21, 2015
 }
 \author{
-Clint P. George, April 15, 2014
+Clint P. George
 }
 \seealso{
-Other datasets: \code{\link{bop}}, \code{\link{whales}},
-  \code{\link{wt16}}
+Other datasets: \code{\link{autos-motorcycles}},
+  \code{\link{bop}}, \code{\link{canis}},
+  \code{\link{cats}}, \code{\link{felines}},
+  \code{\link{ibm-mac}},
+  \code{\link{med-christian-baseball}}, \code{\link{rec}},
+  \code{\link{sci}}, \code{\link{whales}},
+  \code{\link{wt16m}}, \code{\link{wt16}}
 }
 
