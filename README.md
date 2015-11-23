@@ -1,4 +1,4 @@
-Markov chain Monte Carlo Algorithms for the Latent Dirichlet Allocation Model
+Markov Chain Monte Carlo Algorithms for the Latent Dirichlet Allocation Model
 =============================================================================
 
 This **R** package, **ldamcmc**, implements several Markov chain Monte Carlo (MCMC) algorithms for the latent Dirichlet allocation (LDA) model. This includes: 
