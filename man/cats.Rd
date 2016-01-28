@@ -56,9 +56,9 @@ Articles are downloaded from the
 A corpus created from a subset of the Wikipedia articles under the 
 categories: 
  \itemize{
-   \item Leopardus (50 documents)
-   \item Lynx (50 documents)
-   \item Prionailurus (50 documents).
+   \item Leopardus (8 documents)
+   \item Lynx (8 documents)
+   \item Prionailurus (7 documents).
  }
 All the three categories of this corpus are under the Wikipedia 
 super-category \href{http://en.wikipedia.org/wiki/Category:Felines}{Felines}.

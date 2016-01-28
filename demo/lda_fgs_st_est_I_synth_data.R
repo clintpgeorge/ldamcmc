@@ -24,14 +24,15 @@
 #'  November 04, 2014 - Initial version 
 #' 
 #' Example runs: 
-#'  Rscript lda_fgs_st_est_I_synth_data.R 2015 101000 1000 4
+#'  Rscript lda_fgs_st_est_I_synth_data.R 2015 1001000 1000 4
 #'  Rscript lda_fgs_st_est_I_synth_data.R 1983 101000 1000 2
 #'
 #' #############################################################################
 
 rm(list=ls());
 library(ldamcmc); 
-setwd('H:/lda-hp-data') # the user home directory 
+
+setwd('D:/data/lda-hp-data') # the user home directory 
 
 # Initialize variables ----------------------------------------------------
 
@@ -57,7 +58,7 @@ save.hat.ratios <- 1
 save.tilde.ratios <- 1
 verbose        <- 0
 fn.prefix      <- paste("fgs-st-exp-synth-k", K, "-v", V, "-d", D, "-ds", 
-                        doc.size, "-seed", SEED, "-cfg-02-", 
+                        doc.size, "-seed", SEED,  
                         format(Sys.time(), "%Y%b%d%H%M%S"), sep="")
 
 # Generates SYNTHETIC documents -------------------------------------------

@@ -56,9 +56,9 @@ Articles are downloaded from the
 A corpus created from a subset of the Wikipedia articles under the 
 categories: 
  \itemize{
-   \item Coyotes (50 documents)
-   \item Jackals (50 documents)
-   \item Wolves (50 documents).
+   \item Coyotes (7 documents)
+   \item Jackals (7 documents)
+   \item Wolves (8 documents).
  }
 All the three categories of this corpus are under the Wikipedia 
 super-category \href{http://en.wikipedia.org/wiki/Category:Canis}{Canis}.

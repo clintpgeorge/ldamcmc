@@ -56,10 +56,10 @@ Articles are downloaded from the
 A corpus created from a subset of the Wikipedia articles under the 
 categories: 
  \itemize{
-   \item Acinonyx (50 documents)
-   \item Leopardus (50 documents) 
-   \item Prionailurus (50 documents)
-   \item Puma (50 documents).
+   \item Acinonyx (6 documents)
+   \item Leopardus (8 documents) 
+   \item Prionailurus (7 documents)
+   \item Puma (8 documents).
  }
 All the three categories of this corpus are under the Wikipedia 
 super-category \href{http://en.wikipedia.org/wiki/Category:Felines}{Felines}.
