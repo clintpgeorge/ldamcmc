@@ -32,6 +32,9 @@
 #' @param save.hat.ratios if 1 sub grid and main grid ratios are saved 
 #' @param save.tilde.ratios if 1 normalized main grid ratios are saved. It's 
 #' mainly used for estimating posterior expectations.  
+#' @param verbose values: {1, 0}   
+#' @param max.iter.final the max number of Gibbs iterations to be performed for 
+#' the final tuning run   
 #'   
 #' @return the Gibbs sampling output
 #'   
@@ -39,19 +42,20 @@
 #' 
 #' @family Gibbs sampling methods
 #' 
-#' @details Last modified on: May 30, 2015 
+#' @details Last modified on: January 28, 2016 
 #'   
 lda_fgs_st <- function(K, V, wid, doc.N, h.grid, st.grid, st.grid.nbrs, 
                        init.st.grid.index, init.st.grid.zetas, max.iter, burn.in, 
                        spacing, tuning.iter, save.z, save.beta, save.theta, 
                        save.st.grid.index, save.lp, save.hat.ratios, 
-                       save.tilde.ratios, verbose) {
+                       save.tilde.ratios, verbose, max.iter.final=max.iter) {
   
   # initializes the variables 
   total.N <- length(wid); # the total number of word instances 
   alpha <- st.grid[1, init.st.grid.index]
   alpha.v <- array(alpha, dim=c(K, 1));
   n.alpha.v <- alpha.v / sum(alpha.v);
+  max.iter.final <- ifelse(max.iter.final <= max.iter, max.iter, max.iter.final)
   
   # initial selection of topics for words
   zid <- sample(1:K, total.N, replace = T, prob = n.alpha.v); 
@@ -62,7 +66,8 @@ lda_fgs_st <- function(K, V, wid, doc.N, h.grid, st.grid, st.grid.nbrs,
                st.grid, st.grid.nbrs, init.st.grid.index - 1, 
                init.st.grid.zetas, max.iter, burn.in, spacing, tuning.iter, 
                save.z, save.beta, save.theta, save.st.grid.index, save.lp, 
-               save.hat.ratios, save.tilde.ratios, verbose, PACKAGE = "ldamcmc");
+               save.hat.ratios, save.tilde.ratios, verbose, max.iter.final, 
+               PACKAGE = "ldamcmc");
   
   # We need to change C++ indexing scheme to R array indexing scheme
   # ifelse(is.null(ret$Z), NULL, ret$Z+1)

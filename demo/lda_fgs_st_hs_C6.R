@@ -29,6 +29,7 @@ setwd('D:/data/lda-hp-data/') # sets the working directory
 
 spacing            <- 1
 max.iter           <- 54000
+max.iter.final     <- 104000
 burn.in            <- 4000
 SEED               <- 2015;
 tuning.iter        <- 3
@@ -36,7 +37,7 @@ save.z             <- 0 # save z samples
 save.beta          <- 0 # save beta samples 
 save.theta         <- 1 # save theta samples 
 save.st.grid.index <- 0 # save selected h indices 
-save.lp            <- 1 # save log posterior
+save.lp            <- 0 # save log posterior
 save.hat.ratios    <- 1
 save.tilde.ratios  <- 1
 verbose            <- 0
@@ -91,7 +92,7 @@ model              <- lda_fgs_st(K, V, ds$wid + 1, doc.N, h.grid, st.grid,
                                  init.st.grid.zetas, max.iter, burn.in, spacing, 
                                  tuning.iter, save.z, save.beta, save.theta, 
                                  save.st.grid.index, save.lp, save.hat.ratios, 
-                                 save.tilde.ratios, verbose);
+                                 save.tilde.ratios, verbose, max.iter.final);
 ptm                <- proc.time() - ptm;
 
 

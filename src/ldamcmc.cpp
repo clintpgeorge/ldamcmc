@@ -884,9 +884,11 @@ RcppExport SEXP lda_acgs(
  *    save_hat_ratios_         - save h-grid hat ratios, values: {1, 0}  
  *    save_tilde_ratios_       - save h-grid tilde ratios, values: {1, 0}  
  *    verbose_                 - values: {1, 0}   
+ *    max_iter_final_          - maximum number of Gibbs iterations for the 
+ *                               final run 
  *
  *  Last modified on: 
- *    May 30, 2015 
+ *    January 28, 2016 
  */
  
 RcppExport SEXP lda_fgs_st(
@@ -911,7 +913,8 @@ RcppExport SEXP lda_fgs_st(
   SEXP save_lp_,
   SEXP save_hat_ratios_,
   SEXP save_tilde_ratios_,
-  SEXP verbose_
+  SEXP verbose_,
+  SEXP max_iter_final_
   ) {
 
 	cout << endl << "lda_fgs_st (c++): Initializing variables...";
@@ -939,6 +942,7 @@ RcppExport SEXP lda_fgs_st(
 	unsigned int save_hat_ratios = as<unsigned int>(save_hat_ratios_);
 	unsigned int save_tilde_ratios = as<unsigned int>(save_tilde_ratios_);
 	unsigned int verbose = as<unsigned int>(verbose_);
+	unsigned int max_iter_final = as<unsigned int>(max_iter_final_);
   
 	// Local variables 
 	unsigned int d, i, k, g, iter, titer, instances;
@@ -947,7 +951,7 @@ RcppExport SEXP lda_fgs_st(
 	// unsigned int num_saved_samples = (save_hat_ratios
   //                                   ? ceil((max_iter-burn_in)*3/(double)spacing)
   //                                  : ceil((max_iter-burn_in)/(double)spacing));
-  unsigned int num_saved_samples = ceil((max_iter-burn_in) / (double)spacing);
+  unsigned int num_saved_samples = ceil((max_iter_final-burn_in)/(double)spacing);
 	cube thetas;
 	cube betas;
 	umat Z; 
@@ -1036,7 +1040,7 @@ RcppExport SEXP lda_fgs_st(
     
     st_grid_zetas.col(titer) = zetas; // saves zeta for a ST iteration  
     
-    cout << "lda_fgs_st (c++): Gibbs sampling" << endl;
+    
     
     // we need to reset these after each tuning iteration 
     st_grid_occupancy = zeros<vec>(st_grid.n_cols); 
@@ -1051,7 +1055,12 @@ RcppExport SEXP lda_fgs_st(
     // Added on January 23, 2015 
     // num_gibbs_iter = ((((titer+1) == tuning_iter) && save_hat_ratios)
     //                   ? ((max_iter-burn_in)*3 + burn_in) : max_iter);
-    num_gibbs_iter = max_iter; 
+    // num_gibbs_iter = max_iter; 
+    
+    // Added on January 28, 2016 
+    num_gibbs_iter = (((titer+1) == tuning_iter) ? max_iter_final : max_iter);
+    
+    cout << "lda_fgs_st (c++): Gibbs sampling (iterations = " << num_gibbs_iter << ")" << endl;
     
     // *************************************************************************
     // BEGIN: Gibbs Sampling Loop 

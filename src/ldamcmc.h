@@ -10,6 +10,8 @@ using namespace std ;
 
 RNGScope scope;
 
+
+
 // Helper functions 
 
 /**
@@ -309,7 +311,8 @@ RcppExport SEXP lda_fgs_st(
   SEXP save_lp_,
   SEXP save_hat_ratios_,
   SEXP save_tilde_ratios_,
-  SEXP verbose_
+  SEXP verbose_,
+  SEXP max_iter_final_
   );
 
 RcppExport SEXP lda_fgs_hs(
