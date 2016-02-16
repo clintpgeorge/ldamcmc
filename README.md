@@ -36,7 +36,6 @@ Dependencies
 This package uses the following R packages, which are already included in this R package.   
 * **Rcpp**
 * **RcppArmadillo** based on the **Armadillo** C++ package 
-* **MCMCpack**, which may require packages such as **coda** and **MASS** 
 * **lattice**
 
 Installation Guide 
