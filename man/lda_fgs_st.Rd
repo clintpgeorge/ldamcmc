@@ -7,7 +7,7 @@
 lda_fgs_st(K, V, wid, doc.N, h.grid, st.grid, st.grid.nbrs, init.st.grid.index,
   init.st.grid.zetas, max.iter, burn.in, spacing, tuning.iter, save.z,
   save.beta, save.theta, save.st.grid.index, save.lp, save.hat.ratios,
-  save.tilde.ratios, verbose)
+  save.tilde.ratios, verbose, max.iter.final = max.iter)
 }
 \arguments{
 \item{K}{the number of topics in the corpus}
@@ -59,6 +59,11 @@ iterations}
 
 \item{save.tilde.ratios}{if 1 normalized main grid ratios are saved. It's 
 mainly used for estimating posterior expectations.}
+
+\item{verbose}{values: {1, 0}}
+
+\item{max.iter.final}{the max number of Gibbs iterations to be performed for 
+the final tuning run}
 }
 \value{
 the Gibbs sampling output
@@ -67,7 +72,7 @@ the Gibbs sampling output
 This a Markov chain on \eqn{(z, \beta, \theta)}
 }
 \details{
-Last modified on: May 30, 2015
+Last modified on: January 28, 2016
 }
 \seealso{
 Other Gibbs sampling methods: \code{\link{get_grid_neighbors}},
