@@ -21,3 +21,4 @@
 # images 
 data-raw/*.pdf
 data-raw/*.eps
+*.pdf

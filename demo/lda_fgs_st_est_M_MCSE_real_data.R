@@ -38,6 +38,7 @@ rownames(m.hat.mcse) <- c("est", "se");
 print.top.M.est(m.hat.mcse[1,]);
 print.top.M.est(model$m.hat);
 
+
 # for tilde estimates  ----------------------------------------------------
 
 m.tilde.mcse <- apply(model$m.tilde.ratios, 1, mcse.fn); # apply on rows 

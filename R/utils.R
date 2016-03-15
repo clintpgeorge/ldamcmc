@@ -66,6 +66,7 @@ gen_meshgrid <- function(x.axis, y.axis){
   
   alphas <- rbind(as.vector(l$x), as.vector(l$y));
   
+  alphas;
 }
 
 #' Plot a meshgrid
