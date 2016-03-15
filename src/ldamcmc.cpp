@@ -42,7 +42,7 @@ RcppExport SEXP lda_fgs_lppv(
   
   uvec doc_lengths = as<uvec>(doc_lengths_);
   uvec word_ids = as<uvec>(word_ids_);
-  uvec z = as<uvec>(topic_assignments_);
+  uvec init_z = as<uvec>(topic_assignments_);
   vec alpha_v = as<vec>(alpha_v_);
 
   double eta = as<double>(eta_);
@@ -57,6 +57,7 @@ RcppExport SEXP lda_fgs_lppv(
   unsigned int saved_samples = ceil((max_iter - burn_in) / (double) spacing);
   unsigned int num_docs = doc_lengths.n_elem;
 
+  uvec z; 
   mat beta_samples = zeros<mat>(num_topics, vocab_size);
   mat beta_counts = zeros<mat>(num_topics, vocab_size);
   mat lppv = zeros<mat>(num_docs, saved_samples);
@@ -89,9 +90,10 @@ RcppExport SEXP lda_fgs_lppv(
     
     ss_idx = 0; 
     
-    // Initilizes beta
+    // Initilizes beta and z
     
     beta_counts.fill(eta); // initializes with the smoothing parameter
+    z = uvec(init_z); // initializes the \z vector 
     for (d = 0; d < num_docs; d++){ // for each document
       if (d == hod) continue; // ignores the held-out document    
       vector < unsigned int > word_idx = doc_word_indices[d];
