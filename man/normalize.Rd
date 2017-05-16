@@ -25,4 +25,3 @@ normalize(XX, dim=2);
 \code{\link{colSums}} 
 \code{\link{rowSums}}
 }
-

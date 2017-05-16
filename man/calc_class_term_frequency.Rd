@@ -33,4 +33,3 @@ ctf <- calc_class_term_frequency(class.labels, vocab,
 
 
 }
-

@@ -46,4 +46,3 @@ ds             <- gen_corpus(K, V, D, doc.size, alpha, eta);
 Other corpus: \code{\link{calc_doc_cos}},
   \code{\link{calc_doc_tf}}
 }
-

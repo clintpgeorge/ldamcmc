@@ -3,11 +3,11 @@
 \docType{data}
 \name{ibm-mac}
 \alias{ibm-mac}
+\alias{ibm-mac.ds}
 \alias{ibm-mac.class.labels}
 \alias{ibm-mac.doc.N}
-\alias{ibm-mac.docs}
 \alias{ibm-mac.docs.metadata}
-\alias{ibm-mac.ds}
+\alias{ibm-mac.docs}
 \alias{ibm-mac.vocab}
 \title{PC Hardware and Mac Hardware (C-5)}
 \format{\code{vocab} a vector of unique words in the corpus vocabulary.
@@ -57,9 +57,6 @@ articles under the categories (newsgroups) PC Hardware and Mac Hardware
 \note{
 Created on November 21, 2015
 }
-\author{
-Clint P. George
-}
 \seealso{
 Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{bop}}, \code{\link{canis}},
@@ -68,4 +65,6 @@ Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{sci}}, \code{\link{whales}},
   \code{\link{wt16m}}, \code{\link{wt16}}, \code{\link{wt}}
 }
-
+\author{
+Clint P. George
+}

@@ -24,4 +24,3 @@ Last modified on: May 24, 2015
 Other corpus: \code{\link{calc_doc_tf}},
   \code{\link{gen_corpus}}
 }
-

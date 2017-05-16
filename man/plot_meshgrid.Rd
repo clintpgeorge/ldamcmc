@@ -47,4 +47,3 @@ plot_meshgrid(values, x.axis, y.axis, "alpha", "eta", "Estimate of B(h)");
 \seealso{
 \code{\link{persp}} \code{\link[lattice]{trellis.device}}
 }
-

@@ -3,11 +3,11 @@
 \docType{data}
 \name{autos-motorcycles}
 \alias{autos-motorcycles}
+\alias{autos-motorcycles.ds}
 \alias{autos-motorcycles.class.labels}
 \alias{autos-motorcycles.doc.N}
-\alias{autos-motorcycles.docs}
 \alias{autos-motorcycles.docs.metadata}
-\alias{autos-motorcycles.ds}
+\alias{autos-motorcycles.docs}
 \alias{autos-motorcycles.vocab}
 \title{Autos and Motorcycles (C-4)}
 \format{\code{vocab} a vector of unique words in the corpus vocabulary.
@@ -58,9 +58,6 @@ Motorcycles.
 \note{
 Created on November 21, 2015
 }
-\author{
-Clint P. George
-}
 \seealso{
 Other datasets: \code{\link{bop}}, \code{\link{canis}},
   \code{\link{cats}}, \code{\link{felines}},
@@ -69,4 +66,6 @@ Other datasets: \code{\link{bop}}, \code{\link{canis}},
   \code{\link{sci}}, \code{\link{whales}},
   \code{\link{wt16m}}, \code{\link{wt16}}, \code{\link{wt}}
 }
-
+\author{
+Clint P. George
+}

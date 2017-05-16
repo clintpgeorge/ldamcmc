@@ -46,7 +46,5 @@ sampler for LDA---a Markov chain on \eqn{(z, \beta, \theta)}.
 \seealso{
 Other Gibbs sampling methods: \code{\link{get_grid_neighbors}},
   \code{\link{lda_acgs_hs}}, \code{\link{lda_acgs}},
-  \code{\link{lda_fgs_blei_corpus}},
   \code{\link{lda_fgs_hs}}, \code{\link{lda_fgs_st}}
 }
-

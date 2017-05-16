@@ -24,4 +24,3 @@ tfidfs <- calc_tfidf(documents, vocab);
 
 
 }
-

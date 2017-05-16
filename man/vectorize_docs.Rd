@@ -35,4 +35,3 @@ ds <- vectorize_docs(documents);
 Other lda data preprocessing methods: \code{\link{calc_doc_lengths}},
   \code{\link{read_docs}}
 }
-

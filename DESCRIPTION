@@ -2,8 +2,8 @@ Package: ldamcmc
 Type: Package
 Title: Markov chain Monte Carlo Algorithms for the Latent Dirichlet Allocation
     Model
-Version: 1.0
-Date: 2015-11-20
+Version: 1.1
+Date: 2017-05-16
 Author: Clint P. George and Hani Doss
 Maintainer: Clint P. George <cgeorge@cise.ufl.edu>
 URL: https://github.com/clintpgeorge/ldamcmc
@@ -13,7 +13,9 @@ License: MIT
 Depends:
     R (>= 3.2.2),
     Rcpp (>= 0.12.2),
-    RcppArmadillo (>= 0.6.200.2.0),
-    lattice (>= 0.20-33)
-LinkingTo: Rcpp, RcppArmadillo
-RoxygenNote: 5.0.1
+    RcppArmadillo (>= 0.7.700.0.0),
+    lattice (>= 0.20-35)
+LinkingTo: 
+    Rcpp, 
+    RcppArmadillo
+RoxygenNote: 6.0.1

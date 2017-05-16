@@ -26,4 +26,3 @@ from the FGS or ACGS chain
 \seealso{
 \code{\link{calc_class_term_frequency}}, \code{\link{normalize}}
 }
-

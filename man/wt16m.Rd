@@ -3,11 +3,11 @@
 \docType{data}
 \name{wt16m}
 \alias{wt16m}
+\alias{wt16m.ds}
 \alias{wt16m.class.labels}
 \alias{wt16m.doc.N}
-\alias{wt16m.docs}
 \alias{wt16m.docs.metadata}
-\alias{wt16m.ds}
+\alias{wt16m.docs}
 \alias{wt16m.vocab}
 \title{Whales and Tires (8 documents each)}
 \format{\code{vocab} a vector of unique words in the corpus vocabulary.
@@ -69,9 +69,6 @@ documents have similar topic features.
 \note{
 Created on November 21, 2015
 }
-\author{
-Clint P. George
-}
 \seealso{
 Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{bop}}, \code{\link{canis}},
@@ -81,4 +78,6 @@ Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{sci}}, \code{\link{whales}},
   \code{\link{wt16}}, \code{\link{wt}}
 }
-
+\author{
+Clint P. George
+}

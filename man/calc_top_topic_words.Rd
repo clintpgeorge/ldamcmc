@@ -28,4 +28,3 @@ calc_top_topic_words(beta, vocab, num.words=30, num.digits=2)
 \seealso{
 \code{\link{lda_fgs}}, \code{\link{lda_acgs}}, \code{\link{lda_fgs_blei_corpus}}
 }
-

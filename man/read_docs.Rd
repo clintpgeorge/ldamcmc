@@ -28,4 +28,3 @@ The \pkg{\link{lda}} R package by Chong Wong
 Other lda data preprocessing methods: \code{\link{calc_doc_lengths}},
   \code{\link{vectorize_docs}}
 }
-

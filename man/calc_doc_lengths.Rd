@@ -26,4 +26,3 @@ doc.N <- calc_doc_lengths(documents)
 Other lda data preprocessing methods: \code{\link{read_docs}},
   \code{\link{vectorize_docs}}
 }
-

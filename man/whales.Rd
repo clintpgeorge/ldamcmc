@@ -3,11 +3,11 @@
 \docType{data}
 \name{whales}
 \alias{whales}
+\alias{whales.ds}
 \alias{whales.class.labels}
 \alias{whales.doc.N}
-\alias{whales.docs}
 \alias{whales.docs.metadata}
-\alias{whales.ds}
+\alias{whales.docs}
 \alias{whales.vocab}
 \title{Whales}
 \format{\code{vocab} a vector of unique words in the corpus vocabulary.
@@ -70,9 +70,6 @@ the following Wikipedia subcategories:
 \note{
 Created on November 21, 2015
 }
-\author{
-Clint P. George
-}
 \seealso{
 Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{bop}}, \code{\link{canis}},
@@ -82,4 +79,6 @@ Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{sci}}, \code{\link{wt16m}},
   \code{\link{wt16}}, \code{\link{wt}}
 }
-
+\author{
+Clint P. George
+}

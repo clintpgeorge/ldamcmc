@@ -3,11 +3,11 @@
 \docType{data}
 \name{bop}
 \alias{bop}
+\alias{bop.ds}
 \alias{bop.class.labels}
 \alias{bop.doc.N}
-\alias{bop.docs}
 \alias{bop.docs.metadata}
-\alias{bop.ds}
+\alias{bop.docs}
 \alias{bop.vocab}
 \title{Birds of Prey (C-9)}
 \format{\code{vocab} a vector of unique words in the corpus vocabulary.
@@ -72,9 +72,6 @@ the following Wikipedia categories:
 \note{
 Created on November 21, 2015
 }
-\author{
-Clint P. George
-}
 \seealso{
 Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{canis}}, \code{\link{cats}},
@@ -83,4 +80,6 @@ Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{sci}}, \code{\link{whales}},
   \code{\link{wt16m}}, \code{\link{wt16}}, \code{\link{wt}}
 }
-
+\author{
+Clint P. George
+}

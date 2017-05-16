@@ -3,11 +3,11 @@
 \docType{data}
 \name{sci}
 \alias{sci}
+\alias{sci.ds}
 \alias{sci.class.labels}
 \alias{sci.doc.N}
-\alias{sci.docs}
 \alias{sci.docs.metadata}
-\alias{sci.ds}
+\alias{sci.docs}
 \alias{sci.vocab}
 \title{Science (C-3)}
 \format{\code{vocab} a vector of unique words in the corpus vocabulary.
@@ -65,9 +65,6 @@ under the super-category Science in the 20Newsgroups dataset.
 \note{
 Created on November 21, 2015
 }
-\author{
-Clint P. George
-}
 \seealso{
 Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{bop}}, \code{\link{canis}},
@@ -77,4 +74,6 @@ Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{whales}}, \code{\link{wt16m}},
   \code{\link{wt16}}, \code{\link{wt}}
 }
-
+\author{
+Clint P. George
+}

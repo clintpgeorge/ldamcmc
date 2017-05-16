@@ -40,4 +40,3 @@ Computation is based on Zhe Chen (2015)'s method
 Other posterior predictive check (PPC) options: \code{\link{lda_acgs_lppv_R}},
   \code{\link{lda_fgs_lppv}}
 }
-

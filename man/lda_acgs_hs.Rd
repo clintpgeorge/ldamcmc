@@ -52,9 +52,6 @@ Sampler of Griffiths and Steyvers (2004)
 }
 \seealso{
 Other Gibbs sampling methods: \code{\link{get_grid_neighbors}},
-  \code{\link{lda_acgs}},
-  \code{\link{lda_fgs_blei_corpus}},
-  \code{\link{lda_fgs_hs}}, \code{\link{lda_fgs_st}},
-  \code{\link{lda_fgs}}
+  \code{\link{lda_acgs}}, \code{\link{lda_fgs_hs}},
+  \code{\link{lda_fgs_st}}, \code{\link{lda_fgs}}
 }
-

@@ -25,9 +25,6 @@ grid.nbrs <- get_grid_neighbors(x.axis, y.axis);
 }
 \seealso{
 Other Gibbs sampling methods: \code{\link{lda_acgs_hs}},
-  \code{\link{lda_acgs}},
-  \code{\link{lda_fgs_blei_corpus}},
-  \code{\link{lda_fgs_hs}}, \code{\link{lda_fgs_st}},
-  \code{\link{lda_fgs}}
+  \code{\link{lda_acgs}}, \code{\link{lda_fgs_hs}},
+  \code{\link{lda_fgs_st}}, \code{\link{lda_fgs}}
 }
-

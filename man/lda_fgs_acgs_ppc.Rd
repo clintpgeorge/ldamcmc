@@ -19,4 +19,3 @@ Added on November 10, 2015
 \author{
 Clint P. George
 }
-

@@ -3,11 +3,11 @@
 \docType{data}
 \name{wt16}
 \alias{wt16}
+\alias{wt16.ds}
 \alias{wt16.class.labels}
 \alias{wt16.doc.N}
-\alias{wt16.docs}
 \alias{wt16.docs.metadata}
-\alias{wt16.ds}
+\alias{wt16.docs}
 \alias{wt16.vocab}
 \title{Whales and Tires (8 documents each)}
 \format{\code{vocab} a vector of unique words in the corpus vocabulary.
@@ -67,9 +67,6 @@ Documents all datasets available in the R package: ldamcmc
 \note{
 Created on November 21, 2015
 }
-\author{
-Clint P. George
-}
 \seealso{
 Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{bop}}, \code{\link{canis}},
@@ -79,4 +76,6 @@ Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{sci}}, \code{\link{whales}},
   \code{\link{wt16m}}, \code{\link{wt}}
 }
-
+\author{
+Clint P. George
+}

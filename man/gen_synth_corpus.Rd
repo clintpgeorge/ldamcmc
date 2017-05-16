@@ -41,4 +41,3 @@ beta.m[2, ]    <- rdirichlet(1, gen.eta.v);
 ds             <- gen_synth_corpus(D, lambda.hat, gen.alpha.v, beta.m);
 
 }
-

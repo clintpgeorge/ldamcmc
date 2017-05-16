@@ -3,11 +3,11 @@
 \docType{data}
 \name{felines}
 \alias{felines}
+\alias{felines.ds}
 \alias{felines.class.labels}
 \alias{felines.doc.N}
-\alias{felines.docs}
 \alias{felines.docs.metadata}
-\alias{felines.ds}
+\alias{felines.docs}
 \alias{felines.vocab}
 \title{Felines (C-7)}
 \format{\code{vocab} a vector of unique words in the corpus vocabulary.
@@ -67,9 +67,6 @@ super-category \href{http://en.wikipedia.org/wiki/Category:Felines}{Felines}.
 \note{
 Created on November 21, 2015
 }
-\author{
-Clint P. George
-}
 \seealso{
 Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{bop}}, \code{\link{canis}},
@@ -78,4 +75,6 @@ Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{sci}}, \code{\link{whales}},
   \code{\link{wt16m}}, \code{\link{wt16}}, \code{\link{wt}}
 }
-
+\author{
+Clint P. George
+}

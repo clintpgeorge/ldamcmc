@@ -3,11 +3,11 @@
 \docType{data}
 \name{wt}
 \alias{wt}
+\alias{wt.ds}
 \alias{wt.class.labels}
 \alias{wt.doc.N}
-\alias{wt.docs}
 \alias{wt.docs.metadata}
-\alias{wt.ds}
+\alias{wt.docs}
 \alias{wt.vocab}
 \title{Whales and Tires}
 \format{\code{vocab} a vector of unique words in the corpus vocabulary.
@@ -62,9 +62,6 @@ Dirichlet allocation model. This dataset contains 84 Wikipedia articles.
 \note{
 Created on November 21, 2015
 }
-\author{
-Clint P. George
-}
 \seealso{
 Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{bop}}, \code{\link{canis}},
@@ -74,4 +71,6 @@ Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{sci}}, \code{\link{whales}},
   \code{\link{wt16m}}, \code{\link{wt16}}
 }
-
+\author{
+Clint P. George
+}

@@ -26,4 +26,3 @@ y.axis         <- seq(.005, 1., by = .005);
 alphas         <- gen_meshgrid(x.axis, y.axis); 
 
 }
-

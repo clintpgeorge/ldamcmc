@@ -77,7 +77,5 @@ Last modified on: January 28, 2016
 \seealso{
 Other Gibbs sampling methods: \code{\link{get_grid_neighbors}},
   \code{\link{lda_acgs_hs}}, \code{\link{lda_acgs}},
-  \code{\link{lda_fgs_blei_corpus}},
   \code{\link{lda_fgs_hs}}, \code{\link{lda_fgs}}
 }
-

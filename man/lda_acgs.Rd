@@ -45,9 +45,6 @@ sampler (CGS) of Griffiths and Steyvers (2004)---a Markov chain on \eqn{z}.
 }
 \seealso{
 Other Gibbs sampling methods: \code{\link{get_grid_neighbors}},
-  \code{\link{lda_acgs_hs}},
-  \code{\link{lda_fgs_blei_corpus}},
-  \code{\link{lda_fgs_hs}}, \code{\link{lda_fgs_st}},
-  \code{\link{lda_fgs}}
+  \code{\link{lda_acgs_hs}}, \code{\link{lda_fgs_hs}},
+  \code{\link{lda_fgs_st}}, \code{\link{lda_fgs}}
 }
-

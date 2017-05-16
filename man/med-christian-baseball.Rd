@@ -3,11 +3,11 @@
 \docType{data}
 \name{med-christian-baseball}
 \alias{med-christian-baseball}
+\alias{med-christian-baseball.ds}
 \alias{med-christian-baseball.class.labels}
 \alias{med-christian-baseball.doc.N}
-\alias{med-christian-baseball.docs}
 \alias{med-christian-baseball.docs.metadata}
-\alias{med-christian-baseball.ds}
+\alias{med-christian-baseball.docs}
 \alias{med-christian-baseball.vocab}
 \title{Medicine, Christianity, and Baseball (C-1)}
 \format{\code{vocab} a vector of unique words in the corpus vocabulary.
@@ -62,9 +62,6 @@ a random subset of articles from the 20Newsgroups categories:
 \note{
 Created on November 21, 2015
 }
-\author{
-Clint P. George
-}
 \seealso{
 Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{bop}}, \code{\link{canis}},
@@ -73,4 +70,6 @@ Other datasets: \code{\link{autos-motorcycles}},
   \code{\link{sci}}, \code{\link{whales}},
   \code{\link{wt16m}}, \code{\link{wt16}}, \code{\link{wt}}
 }
-
+\author{
+Clint P. George
+}

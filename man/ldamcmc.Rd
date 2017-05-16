@@ -3,8 +3,8 @@
 \docType{package}
 \name{ldamcmc}
 \alias{ldamcmc}
-\alias{ldamcmc-package}
 \alias{package-ldamcmc}
+\alias{ldamcmc-package}
 \title{Markov chain Monte Carlo Algorithms for the Latent Dirichlet 
 Allocation Model}
 \description{
@@ -22,9 +22,6 @@ includes:
    4. Hyperparameter selection in the LDA model (George and Doss 2015) 
    
    5. Posterior predictive checking (PPC, Chen and Doss 2015)
-}
-\author{
-Clint P. George and Hani Doss
 }
 \references{
 1. Blei, D. M., Ng, A. Y. and Jordan, M. I. (2003). Latent Dirichlet 
@@ -46,4 +43,6 @@ E. Gelman, G. L. Jones and X. L. Meng, eds.). Chapman & Hall/CRC, Boca Raton,
 5. Griffiths, T. L. and Steyvers, M. (2004). Finding scientific topics. 
 Proceedings of the National Academy of Sciences 101 5228-5235.
 }
-
+\author{
+Clint P. George and Hani Doss
+}
