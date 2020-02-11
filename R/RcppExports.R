@@ -74,7 +74,7 @@
 #'  October 01, 2016 - Created date, adapated from lda_fgs_st.cpp 
 #'
 lda_acgs_st <- function(num_topics, vocab_size, docs_tf, h_grid, st_grid, st_grid_nbrs, init_st_grid_index, zetas, tuning_iter, max_iter_tuning, max_iter_final, burn_in, spacing, test_set_share, save_beta, save_theta, save_lp, save_hat_ratios, save_tilde_ratios, verbose) {
-    .Call('ldamcmc_lda_acgs_st', PACKAGE = 'ldamcmc', num_topics, vocab_size, docs_tf, h_grid, st_grid, st_grid_nbrs, init_st_grid_index, zetas, tuning_iter, max_iter_tuning, max_iter_final, burn_in, spacing, test_set_share, save_beta, save_theta, save_lp, save_hat_ratios, save_tilde_ratios, verbose)
+    .Call('_ldamcmc_lda_acgs_st', PACKAGE = 'ldamcmc', num_topics, vocab_size, docs_tf, h_grid, st_grid, st_grid_nbrs, init_st_grid_index, zetas, tuning_iter, max_iter_tuning, max_iter_final, burn_in, spacing, test_set_share, save_beta, save_theta, save_lp, save_hat_ratios, save_tilde_ratios, verbose)
 }
 
 #' LDA: Collapsed Gibbs Sampler with Perplexity Computation
@@ -123,7 +123,7 @@ lda_acgs_st <- function(num_topics, vocab_size, docs_tf, h_grid, st_grid, st_gri
 #' @family MCMC
 #'
 lda_cgs_perplexity <- function(num_topics, vocab_size, docs_tf, alpha_h, eta_h, max_iter, burn_in, spacing, save_theta, save_beta, save_lp, verbose, test_set_share) {
-    .Call('ldamcmc_lda_cgs_perplexity', PACKAGE = 'ldamcmc', num_topics, vocab_size, docs_tf, alpha_h, eta_h, max_iter, burn_in, spacing, save_theta, save_beta, save_lp, verbose, test_set_share)
+    .Call('_ldamcmc_lda_cgs_perplexity', PACKAGE = 'ldamcmc', num_topics, vocab_size, docs_tf, alpha_h, eta_h, max_iter, burn_in, spacing, save_theta, save_beta, save_lp, verbose, test_set_share)
 }
 
 #' LDA: Gibbs-EM with Perplexity Computation
@@ -177,7 +177,7 @@ lda_cgs_perplexity <- function(num_topics, vocab_size, docs_tf, alpha_h, eta_h, 
 #' @family MCMC
 #'
 lda_cgs_em_perplexity <- function(num_topics, vocab_size, docs_tf, alpha_h, eta_h, em_max_iter, gibbs_max_iter, burn_in, spacing, save_theta, save_beta, save_lp, verbose, test_set_share) {
-    .Call('ldamcmc_lda_cgs_em_perplexity', PACKAGE = 'ldamcmc', num_topics, vocab_size, docs_tf, alpha_h, eta_h, em_max_iter, gibbs_max_iter, burn_in, spacing, save_theta, save_beta, save_lp, verbose, test_set_share)
+    .Call('_ldamcmc_lda_cgs_em_perplexity', PACKAGE = 'ldamcmc', num_topics, vocab_size, docs_tf, alpha_h, eta_h, em_max_iter, gibbs_max_iter, burn_in, spacing, save_theta, save_beta, save_lp, verbose, test_set_share)
 }
 
 #' LDA: Gibbs-EM
@@ -190,7 +190,7 @@ lda_cgs_em_perplexity <- function(num_topics, vocab_size, docs_tf, alpha_h, eta_
 #' @family MCMC
 #'
 lda_cgs_em <- function(num_topics, vocab_size, docs_tf, alpha_h, eta_h, em_max_iter, gibbs_max_iter, burn_in, spacing, verbose) {
-    .Call('ldamcmc_lda_cgs_em', PACKAGE = 'ldamcmc', num_topics, vocab_size, docs_tf, alpha_h, eta_h, em_max_iter, gibbs_max_iter, burn_in, spacing, verbose)
+    .Call('_ldamcmc_lda_cgs_em', PACKAGE = 'ldamcmc', num_topics, vocab_size, docs_tf, alpha_h, eta_h, em_max_iter, gibbs_max_iter, burn_in, spacing, verbose)
 }
 
 #' LDA: Full Gibbs Sampler with Perplexity Computation
@@ -239,7 +239,7 @@ lda_cgs_em <- function(num_topics, vocab_size, docs_tf, alpha_h, eta_h, em_max_i
 #' @family MCMC
 #'
 lda_fgs_perplexity <- function(num_topics, vocab_size, docs_tf, alpha_h, eta_h, max_iter, burn_in, spacing, save_theta, save_beta, save_lp, verbose, test_set_share) {
-    .Call('ldamcmc_lda_fgs_perplexity', PACKAGE = 'ldamcmc', num_topics, vocab_size, docs_tf, alpha_h, eta_h, max_iter, burn_in, spacing, save_theta, save_beta, save_lp, verbose, test_set_share)
+    .Call('_ldamcmc_lda_fgs_perplexity', PACKAGE = 'ldamcmc', num_topics, vocab_size, docs_tf, alpha_h, eta_h, max_iter, burn_in, spacing, save_theta, save_beta, save_lp, verbose, test_set_share)
 }
 
 #' LDA: Estimate Bayes Factors using Full Gibbs Sampler
@@ -289,7 +289,7 @@ lda_fgs_perplexity <- function(num_topics, vocab_size, docs_tf, alpha_h, eta_h, 
 #' @family MCMC
 #'
 lda_fgs_BF_perplexity <- function(num_topics, vocab_size, docs_tf, alpha_h, eta_h, h_grid, max_iter, burn_in, spacing, save_theta, save_beta, save_lp, save_BF, verbose, test_set_share) {
-    .Call('ldamcmc_lda_fgs_BF_perplexity', PACKAGE = 'ldamcmc', num_topics, vocab_size, docs_tf, alpha_h, eta_h, h_grid, max_iter, burn_in, spacing, save_theta, save_beta, save_lp, save_BF, verbose, test_set_share)
+    .Call('_ldamcmc_lda_fgs_BF_perplexity', PACKAGE = 'ldamcmc', num_topics, vocab_size, docs_tf, alpha_h, eta_h, h_grid, max_iter, burn_in, spacing, save_theta, save_beta, save_lp, save_BF, verbose, test_set_share)
 }
 
 #' LDA: Full Gibbs Sampler with Posterior Predictive Value
@@ -318,7 +318,7 @@ lda_fgs_BF_perplexity <- function(num_topics, vocab_size, docs_tf, alpha_h, eta_
 #' @family MCMC
 #'
 lda_fgs_ppc <- function(num_topics, vocab_size, docs_tf, alpha_h, eta_h, max_iter, burn_in, spacing, verbose) {
-    .Call('ldamcmc_lda_fgs_ppc', PACKAGE = 'ldamcmc', num_topics, vocab_size, docs_tf, alpha_h, eta_h, max_iter, burn_in, spacing, verbose)
+    .Call('_ldamcmc_lda_fgs_ppc', PACKAGE = 'ldamcmc', num_topics, vocab_size, docs_tf, alpha_h, eta_h, max_iter, burn_in, spacing, verbose)
 }
 
 #' LDA: Serial Tempering with Perplexity Computation
@@ -396,7 +396,7 @@ lda_fgs_ppc <- function(num_topics, vocab_size, docs_tf, alpha_h, eta_h, max_ite
 #'  April 05, 2016 
 #'
 lda_fgs_st_perplexity <- function(num_topics, vocab_size, docs_tf, h_grid, st_grid, st_grid_nbrs, init_st_grid_index, zetas, tuning_iter, max_iter_tuning, max_iter_final, burn_in, spacing, test_set_share, save_beta, save_theta, save_lp, save_hat_ratios, save_tilde_ratios, verbose) {
-    .Call('ldamcmc_lda_fgs_st_perplexity', PACKAGE = 'ldamcmc', num_topics, vocab_size, docs_tf, h_grid, st_grid, st_grid_nbrs, init_st_grid_index, zetas, tuning_iter, max_iter_tuning, max_iter_final, burn_in, spacing, test_set_share, save_beta, save_theta, save_lp, save_hat_ratios, save_tilde_ratios, verbose)
+    .Call('_ldamcmc_lda_fgs_st_perplexity', PACKAGE = 'ldamcmc', num_topics, vocab_size, docs_tf, h_grid, st_grid, st_grid_nbrs, init_st_grid_index, zetas, tuning_iter, max_iter_tuning, max_iter_final, burn_in, spacing, test_set_share, save_beta, save_theta, save_lp, save_hat_ratios, save_tilde_ratios, verbose)
 }
 
 #' Samples from the Antoniak distribution
@@ -421,7 +421,7 @@ lda_fgs_st_perplexity <- function(num_topics, vocab_size, docs_tf, h_grid, st_gr
 #' Created by: Clint P. George
 #'
 sample_antoniak <- function(N, alpha) {
-    .Call('ldamcmc_sample_antoniak', PACKAGE = 'ldamcmc', N, alpha)
+    .Call('_ldamcmc_sample_antoniak', PACKAGE = 'ldamcmc', N, alpha)
 }
 
 #' A speedy sampling from a multimomial distribution
@@ -439,7 +439,7 @@ sample_antoniak <- function(N, alpha) {
 #'
 #' @export
 sample_multinomial <- function(theta) {
-    .Call('ldamcmc_sample_multinomial', PACKAGE = 'ldamcmc', theta)
+    .Call('_ldamcmc_sample_multinomial', PACKAGE = 'ldamcmc', theta)
 }
 
 #' Samples from a Dirichlet distribution given a hyperparameter
@@ -458,6 +458,6 @@ sample_multinomial <- function(theta) {
 #'
 #' @export
 sample_dirichlet <- function(num_elements, alpha) {
-    .Call('ldamcmc_sample_dirichlet', PACKAGE = 'ldamcmc', num_elements, alpha)
+    .Call('_ldamcmc_sample_dirichlet', PACKAGE = 'ldamcmc', num_elements, alpha)
 }
 

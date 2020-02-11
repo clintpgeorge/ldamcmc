@@ -31,7 +31,7 @@ extern
     );
 
 extern
-  arma::uvec randperm (unsigned int n);
+  arma::uvec permute (unsigned int n);
 
 extern
   arma::vec log_gamma_vec (arma::vec x_vec);

@@ -141,7 +141,7 @@ arma::rowvec sample_dirichlet_row_vec (unsigned int num_elements, arma::rowvec a
 * 		order - a vector of indices that represents
 * 				the permutations of numbers in [1, n]
 **/
-arma::uvec randperm(unsigned int n) {
+arma::uvec permute(unsigned int n) {
   arma::uvec order = arma::zeros<arma::uvec>(n);
   unsigned int k, nn, takeanumber, temp;
   for (k=0; k<n; k++) order(k) = k;

@@ -208,7 +208,7 @@ List lda_acgs_st(
     // random selection of test words
     if (test_set_share > 0){
       n_d = doc_word_counts(d); // the document length
-      arma::uvec rp_d = randperm(n_d); // gets random permutations
+      arma::uvec rp_d = permute(n_d); // gets random permutations
       unsigned int num_train_words = (1. - test_set_share) * n_d;
       for (i = num_train_words; i < n_d; i++){
         word_class[rp_d(i)] = 1; // test word
