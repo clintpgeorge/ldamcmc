@@ -27,7 +27,7 @@ in an R console. The rest of them may require commandline arguments for executio
 
 Authors
 ----------------------------
-* [Clint P. George](http://www.cise.ufl.edu/~cgeorge) (Please contact for questions and comments)
+* [Clint P. George](https://www.iitgoa.ac.in/~clint) (Please contact for questions and comments)
 * [Hani Doss](http://www.stat.ufl.edu/~doss) 
 
 Dependencies
