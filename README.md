@@ -54,9 +54,8 @@ allocation. Journal of Machine Learning Research 3 993-1022.
 2. Chen, Z. and Doss, H. (2015). Inference for the number of topics in the 
 latent Dirichlet allocation model via Bayesian mixture modelling. Tech. rep., 
 Department of Statistics, University of Florida.
-3. George, C.P. and Doss, H. (2015). Principled Selection of Hyperparameters 
-in the Latent Dirichlet Allocation Model. Tech. rep., Department of 
-Computer and Information Science and Engineering, University of Florida 
+3. George, C.P. and Doss, H. (2018). [Principled Selection of Hyperparameters 
+in the Latent Dirichlet Allocation Model](http://jmlr.org/papers/v18/15-595.html). Journal of Machine Learning Research. [Supplement](https://www.iitgoa.ac.in/~clint/articles/15-595-supp.pdf)
 4. Geyer, C. J. (2011). Importance sampling, simulated tempering, and 
 umbrella sampling. In Handbook of Markov Chain Monte Carlo (S. P. Brooks, A. 
 E. Gelman, G. L. Jones and X. L. Meng, eds.). Chapman & Hall/CRC, Boca Raton, 
